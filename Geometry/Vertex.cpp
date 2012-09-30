@@ -1,6 +1,13 @@
 #include "Vertex.h"
 
-Vertex::Vertex()
+namespace Geometry
+{
+
+Vertex::Vertex() :
+    x(0, 0, 0),
+    v(0, 0, 0),
+    f(0, 0, 0),
+    mass(0)
 {
 }
 
@@ -15,4 +22,6 @@ Vertex::Vertex(const Vertex& other) :
 Vertex& Vertex::operator =(const Vertex& rhs)
 {
     return *this;
+}
+
 }

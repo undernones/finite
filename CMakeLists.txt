@@ -33,7 +33,14 @@ set(CMAKE_CXX_FLAGS "-Qunused-arguments -std=c++11 -stdlib=libc++ -Wall -Werror 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g")
 
-set(FINITE_SRC HelloWorld.c Geometry/Vertex.cpp)
+set(FINITE_SRC
+    main.cpp
+    Utils.cpp
+    Geometry/Mesh.cpp
+    Geometry/MeshLoader.cpp
+    Geometry/Tetrahedron.cpp
+    Geometry/Vertex.cpp
+)
 #set(VIEWER_SRC main.cpp)
 
 set(LIBS boost_program_options-mt)

@@ -3,20 +3,24 @@
 
 #include <Eigen>
 
-class Vertex
+namespace Geometry
 {
-public:
-    Eigen::Vector3d x; // position
-    Eigen::Vector3d v; // velocity
-    Eigen::Vector3d f; // forces
+    class Vertex
+    {
+    public:
+        Eigen::Vector3d x; // world position
+        Eigen::Vector3d u; // material position
+        Eigen::Vector3d v; // velocity
+        Eigen::Vector3d f; // forces
 
-    double mass;
+        double mass;
 
-    Vertex();
-    Vertex(const Vertex& other);
-    ~Vertex() {}
+        Vertex();
+        Vertex(const Vertex& other);
+        ~Vertex() {}
 
-    Vertex& operator =(const Vertex& rhs);
-};
+        Vertex& operator =(const Vertex& rhs);
+    };
+}
 
 #endif // GEOMETRY_VERTEX_H
