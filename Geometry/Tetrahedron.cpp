@@ -3,6 +3,8 @@
 namespace
 {
 
+const double ONE_6TH = 1.0 / 6.0;
+
 void
 setCol(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)
 {
@@ -17,34 +19,23 @@ setCol(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)
 namespace Geometry
 {
 
-Tetrahedron::Tetrahedron() :
-    X(),
-    Beta(),
-    u(), v(), w()
-{
-    verts[0] = 0;
-    verts[1] = 0;
-    verts[2] = 0;
-    verts[3] = 0;
-}
-
 Tetrahedron::Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d) :
-    X(),
-    Beta(),
-    u(), v(), w()
+    u(), v(), w(),
+    mX(),
+    mBeta()
 {
-    verts[0] = a;
-    verts[1] = b;
-    verts[2] = c;
-    verts[3] = d;
+    this->verts[0] = a;
+    this->verts[1] = b;
+    this->verts[2] = c;
+    this->verts[3] = d;
 }
 
 Tetrahedron::Tetrahedron(const Tetrahedron& other) :
-    X(other.X),
-    Beta(other.Beta),
     u(other.u),
     v(other.v),
-    w(other.w)
+    w(other.w),
+    mX(other.mX),
+    mBeta(other.mBeta)
 {
     memcpy(verts, other.verts, sizeof(verts[0]) * 4);
 }
@@ -56,8 +47,8 @@ Tetrahedron&
 Tetrahedron::operator =(const Tetrahedron& rhs)
 {
     if (this != &rhs) {
-        X = rhs.X;
-        Beta = rhs.Beta;
+        mX = rhs.mX;
+        mBeta = rhs.mBeta;
         u = rhs.u;
         v = rhs.v;
         w = rhs.w;
@@ -67,25 +58,45 @@ Tetrahedron::operator =(const Tetrahedron& rhs)
 }
 
 void
-Tetrahedron::init(const std::vector<Vertex>& vertices)
+Tetrahedron::init(const VertexList& vertices)
+{
+    updateX(vertices);
+    updateBeta(vertices);
+    computeVolume();
+
+	//	iter->computeNormals();
+	//	iter->computeMasses();
+}
+
+const Eigen::Matrix3d&
+Tetrahedron::updateX(const VertexList& vertices)
+{
+    Eigen::Vector3d U = vertices[verts[1]].x - vertices[verts[0]].x;
+    Eigen::Vector3d V = vertices[verts[2]].x - vertices[verts[0]].x;
+    Eigen::Vector3d W = vertices[verts[3]].x - vertices[verts[0]].x;
+    setCol(&mX, 0, U);
+    setCol(&mX, 1, V);
+    setCol(&mX, 2, W);
+    return mX;
+}
+
+const Eigen::Matrix3d&
+Tetrahedron::updateBeta(const VertexList& vertices)
 {
     u = vertices[verts[1]].u - vertices[verts[0]].u;
     v = vertices[verts[2]].u - vertices[verts[0]].u;
     w = vertices[verts[3]].u - vertices[verts[0]].u;
-    setCol(&X, 0, u);
-    setCol(&X, 1, v);
-    setCol(&X, 2, w);
+    setCol(&mBeta, 0, u);
+    setCol(&mBeta, 1, v);
+    setCol(&mBeta, 2, w);
+    mBeta = mBeta.inverse().eval();
+    return mBeta;
+}
 
-    Eigen::Vector3d U = vertices[verts[1]].x - vertices[verts[0]].x;
-    Eigen::Vector3d V = vertices[verts[2]].x - vertices[verts[0]].x;
-    Eigen::Vector3d W = vertices[verts[3]].x - vertices[verts[0]].x;
-    setCol(&Beta, 0, U);
-    setCol(&Beta, 1, V);
-    setCol(&Beta, 2, W);
-    Beta = Beta.inverse().eval();
-	//	iter->computeVolume();
-	//	iter->computeNormals();
-	//	iter->computeMasses();
+void
+Tetrahedron::computeVolume()
+{
+    mVolume = u.cross(v).dot(w) * ONE_6TH;
 }
 
 }

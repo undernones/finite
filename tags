@@ -1,0 +1,158 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARCHITECTURE_ID	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
+Beta	./Geometry/Tetrahedron.h	/^        Eigen::Matrix3d Beta;$/;"	m	class:Geometry::Tetrahedron	access:public
+COMPILER_ID	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_ID /;"	d	file:
+COMPILER_ID	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_ID /;"	d	file:
+COMPILER_ID	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
+COMPILER_VERSION_MAJOR	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MINOR	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_PATCH	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_TWEAK	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+DEC	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
+ERROR	./main.cpp	/^const int ERROR = 1;$/;"	m	namespace:__anon2	file:
+GEOMETRY_MESH_H	./Geometry/Mesh.h	/^#define GEOMETRY_MESH_H$/;"	d
+GEOMETRY_MESH_LOADER_H	./Geometry/MeshLoader.h	/^#define GEOMETRY_MESH_LOADER_H$/;"	d
+GEOMETRY_TETRAHEDRON_H	./Geometry/Tetrahedron.h	/^#define GEOMETRY_TETRAHEDRON_H$/;"	d
+GEOMETRY_TRIANGLE_H	./Geometry/Triangle.h	/^#define GEOMETRY_TRIANGLE_H$/;"	d
+GEOMETRY_VERTEX_H	./Geometry/Vertex.h	/^#define GEOMETRY_VERTEX_H$/;"	d
+Geometry	./Geometry/Mesh.cpp	/^namespace Geometry$/;"	n	file:
+Geometry	./Geometry/Mesh.h	/^namespace Geometry$/;"	n
+Geometry	./Geometry/MeshLoader.cpp	/^namespace Geometry$/;"	n	file:
+Geometry	./Geometry/MeshLoader.h	/^namespace Geometry$/;"	n
+Geometry	./Geometry/Tetrahedron.cpp	/^namespace Geometry$/;"	n	file:
+Geometry	./Geometry/Tetrahedron.h	/^namespace Geometry$/;"	n
+Geometry	./Geometry/Triangle.h	/^namespace Geometry$/;"	n
+Geometry	./Geometry/Vertex.cpp	/^namespace Geometry$/;"	n	file:
+Geometry	./Geometry/Vertex.h	/^namespace Geometry$/;"	n
+Geometry::Mesh	./Geometry/Mesh.h	/^    class Mesh$/;"	c	namespace:Geometry
+Geometry::Mesh::init	./Geometry/Mesh.cpp	/^Mesh::init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)$/;"	f	class:Geometry::Mesh	signature:(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)
+Geometry::Mesh::init	./Geometry/Mesh.h	/^        void init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets);$/;"	p	class:Geometry::Mesh	access:public	signature:(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)
+Geometry::Mesh::tets	./Geometry/Mesh.h	/^        std::vector<Tetrahedron> tets;$/;"	m	class:Geometry::Mesh	access:public
+Geometry::Mesh::verts	./Geometry/Mesh.h	/^        std::vector<Vertex> verts;$/;"	m	class:Geometry::Mesh	access:public
+Geometry::MeshLoader	./Geometry/MeshLoader.h	/^    class MeshLoader$/;"	c	namespace:Geometry
+Geometry::MeshLoader::MeshLoader	./Geometry/MeshLoader.h	/^        MeshLoader() {}$/;"	f	class:Geometry::MeshLoader	access:private	signature:()
+Geometry::MeshLoader::load	./Geometry/MeshLoader.cpp	/^MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)$/;"	f	class:Geometry::MeshLoader	signature:(const std::string& filename, Geometry::Mesh* pMesh)
+Geometry::MeshLoader::load	./Geometry/MeshLoader.h	/^        static bool load(const std::string& filename, Geometry::Mesh* pMesh);$/;"	p	class:Geometry::MeshLoader	access:public	signature:(const std::string& filename, Geometry::Mesh* pMesh)
+Geometry::Tetrahedron	./Geometry/Tetrahedron.h	/^    class Tetrahedron$/;"	c	namespace:Geometry
+Geometry::Tetrahedron::Beta	./Geometry/Tetrahedron.h	/^        Eigen::Matrix3d Beta;$/;"	m	class:Geometry::Tetrahedron	access:public
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron() :$/;"	f	class:Geometry::Tetrahedron	signature:()
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron(const Tetrahedron& other) :$/;"	f	class:Geometry::Tetrahedron	signature:(const Tetrahedron& other)
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d) :$/;"	f	class:Geometry::Tetrahedron	signature:(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron();$/;"	p	class:Geometry::Tetrahedron	access:public	signature:()
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron(const Tetrahedron& other);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const Tetrahedron& other)
+Geometry::Tetrahedron::Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+Geometry::Tetrahedron::X	./Geometry/Tetrahedron.h	/^        Eigen::Matrix3d X;$/;"	m	class:Geometry::Tetrahedron	access:public
+Geometry::Tetrahedron::init	./Geometry/Tetrahedron.cpp	/^Tetrahedron::init(const std::vector<Vertex>& vertices)$/;"	f	class:Geometry::Tetrahedron	signature:(const std::vector<Vertex>& vertices)
+Geometry::Tetrahedron::init	./Geometry/Tetrahedron.h	/^        void init(const std::vector<Vertex>& vertices);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const std::vector<Vertex>& vertices)
+Geometry::Tetrahedron::operator =	./Geometry/Tetrahedron.cpp	/^Tetrahedron::operator =(const Tetrahedron& rhs)$/;"	f	class:Geometry::Tetrahedron	signature:(const Tetrahedron& rhs)
+Geometry::Tetrahedron::operator =	./Geometry/Tetrahedron.h	/^        Tetrahedron& operator =(const Tetrahedron& rhs);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const Tetrahedron& rhs)
+Geometry::Tetrahedron::u	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+Geometry::Tetrahedron::v	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+Geometry::Tetrahedron::verts	./Geometry/Tetrahedron.h	/^        uint32_t verts[4];$/;"	m	class:Geometry::Tetrahedron	access:public
+Geometry::Tetrahedron::w	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+Geometry::Tetrahedron::~Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::~Tetrahedron()$/;"	f	class:Geometry::Tetrahedron	signature:()
+Geometry::Tetrahedron::~Tetrahedron	./Geometry/Tetrahedron.h	/^        ~Tetrahedron();$/;"	p	class:Geometry::Tetrahedron	access:public	signature:()
+Geometry::Triangle	./Geometry/Triangle.h	/^    class Triangle$/;"	c	namespace:Geometry
+Geometry::Triangle::mVerts	./Geometry/Triangle.h	/^        uint32 mVerts[3];$/;"	m	class:Geometry::Triangle	access:public
+Geometry::Vertex	./Geometry/Vertex.h	/^    class Vertex$/;"	c	namespace:Geometry
+Geometry::Vertex::Vertex	./Geometry/Vertex.cpp	/^Vertex::Vertex() :$/;"	f	class:Geometry::Vertex	signature:()
+Geometry::Vertex::Vertex	./Geometry/Vertex.cpp	/^Vertex::Vertex(const Vertex& other) :$/;"	f	class:Geometry::Vertex	signature:(const Vertex& other)
+Geometry::Vertex::Vertex	./Geometry/Vertex.h	/^        Vertex();$/;"	p	class:Geometry::Vertex	access:public	signature:()
+Geometry::Vertex::Vertex	./Geometry/Vertex.h	/^        Vertex(const Vertex& other);$/;"	p	class:Geometry::Vertex	access:public	signature:(const Vertex& other)
+Geometry::Vertex::f	./Geometry/Vertex.h	/^        Eigen::Vector3d f; \/\/ forces$/;"	m	class:Geometry::Vertex	access:public
+Geometry::Vertex::mass	./Geometry/Vertex.h	/^        double mass;$/;"	m	class:Geometry::Vertex	access:public
+Geometry::Vertex::operator =	./Geometry/Vertex.cpp	/^Vertex& Vertex::operator =(const Vertex& rhs)$/;"	f	class:Geometry::Vertex	signature:(const Vertex& rhs)
+Geometry::Vertex::operator =	./Geometry/Vertex.h	/^        Vertex& operator =(const Vertex& rhs);$/;"	p	class:Geometry::Vertex	access:public	signature:(const Vertex& rhs)
+Geometry::Vertex::u	./Geometry/Vertex.h	/^        Eigen::Vector3d u; \/\/ material position$/;"	m	class:Geometry::Vertex	access:public
+Geometry::Vertex::v	./Geometry/Vertex.h	/^        Eigen::Vector3d v; \/\/ velocity$/;"	m	class:Geometry::Vertex	access:public
+Geometry::Vertex::x	./Geometry/Vertex.h	/^        Eigen::Vector3d x; \/\/ world position$/;"	m	class:Geometry::Vertex	access:public
+Geometry::Vertex::~Vertex	./Geometry/Vertex.h	/^        ~Vertex() {}$/;"	f	class:Geometry::Vertex	access:public	signature:()
+HEX	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+Mesh	./Geometry/Mesh.h	/^    class Mesh$/;"	c	namespace:Geometry
+MeshLoader	./Geometry/MeshLoader.h	/^        MeshLoader() {}$/;"	f	class:Geometry::MeshLoader	access:private	signature:()
+MeshLoader	./Geometry/MeshLoader.h	/^    class MeshLoader$/;"	c	namespace:Geometry
+PI	./Utils.h	/^const double PI = 3.14159265359;$/;"	m	namespace:Utils
+PLATFORM_ID	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
+SUCCESS	./main.cpp	/^const int SUCCESS = 0;$/;"	m	namespace:__anon2	file:
+Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron() :$/;"	f	class:Geometry::Tetrahedron	signature:()
+Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron(const Tetrahedron& other) :$/;"	f	class:Geometry::Tetrahedron	signature:(const Tetrahedron& other)
+Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d) :$/;"	f	class:Geometry::Tetrahedron	signature:(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron();$/;"	p	class:Geometry::Tetrahedron	access:public	signature:()
+Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron(const Tetrahedron& other);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const Tetrahedron& other)
+Tetrahedron	./Geometry/Tetrahedron.h	/^        Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+Tetrahedron	./Geometry/Tetrahedron.h	/^    class Tetrahedron$/;"	c	namespace:Geometry
+Triangle	./Geometry/Triangle.h	/^    class Triangle$/;"	c	namespace:Geometry
+UTILS_H	./Utils.h	/^#define UTILS_H$/;"	d
+Utils	./Utils.cpp	/^namespace Utils$/;"	n	file:
+Utils	./Utils.h	/^namespace Utils$/;"	n
+Utils::PI	./Utils.h	/^const double PI = 3.14159265359;$/;"	m	namespace:Utils
+Utils::clamp	./Utils.h	/^inline double clamp(double x, double min, double max)$/;"	f	namespace:Utils	signature:(double x, double min, double max)
+Utils::cube	./Utils.h	/^inline double cube(double value)$/;"	f	namespace:Utils	signature:(double value)
+Utils::error	./Utils.cpp	/^error(const std::string &s)$/;"	f	namespace:Utils	signature:(const std::string &s)
+Utils::error	./Utils.h	/^void error(const std::string &s);$/;"	p	namespace:Utils	signature:(const std::string &s)
+Utils::ftoa	./Utils.cpp	/^ftoa(double d, int decimalPlaces)$/;"	f	namespace:Utils	signature:(double d, int decimalPlaces)
+Utils::ftoa	./Utils.h	/^std::string ftoa(double d, int decimalPlaces = 2);$/;"	p	namespace:Utils	signature:(double d, int decimalPlaces = 2)
+Utils::isWhitespace	./Utils.h	/^inline bool isWhitespace(char c)$/;"	f	namespace:Utils	signature:(char c)
+Utils::isnan	./Utils.h	/^inline bool isnan(T value)$/;"	f	namespace:Utils	signature:(T value)
+Utils::makeRed	./Utils.cpp	/^makeRed(const std::string &s)$/;"	f	namespace:Utils	signature:(const std::string &s)
+Utils::makeRed	./Utils.h	/^std::string makeRed(const std::string &s);$/;"	p	namespace:Utils	signature:(const std::string &s)
+Vertex	./Geometry/Vertex.cpp	/^Vertex::Vertex() :$/;"	f	class:Geometry::Vertex	signature:()
+Vertex	./Geometry/Vertex.cpp	/^Vertex::Vertex(const Vertex& other) :$/;"	f	class:Geometry::Vertex	signature:(const Vertex& other)
+Vertex	./Geometry/Vertex.h	/^        Vertex();$/;"	p	class:Geometry::Vertex	access:public	signature:()
+Vertex	./Geometry/Vertex.h	/^        Vertex(const Vertex& other);$/;"	p	class:Geometry::Vertex	access:public	signature:(const Vertex& other)
+Vertex	./Geometry/Vertex.h	/^    class Vertex$/;"	c	namespace:Geometry
+X	./Geometry/Tetrahedron.h	/^        Eigen::Matrix3d X;$/;"	m	class:Geometry::Tetrahedron	access:public
+__anon1::setCol	./Geometry/Tetrahedron.cpp	/^setCol(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)$/;"	f	namespace:__anon1	signature:(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)
+__anon2::ERROR	./main.cpp	/^const int ERROR = 1;$/;"	m	namespace:__anon2	file:
+__anon2::SUCCESS	./main.cpp	/^const int SUCCESS = 0;$/;"	m	namespace:__anon2	file:
+clamp	./Utils.h	/^inline double clamp(double x, double min, double max)$/;"	f	namespace:Utils	signature:(double x, double min, double max)
+cube	./Utils.h	/^inline double cube(double value)$/;"	f	namespace:Utils	signature:(double value)
+error	./Utils.cpp	/^error(const std::string &s)$/;"	f	namespace:Utils	signature:(const std::string &s)
+error	./Utils.h	/^void error(const std::string &s);$/;"	p	namespace:Utils	signature:(const std::string &s)
+f	./Geometry/Vertex.h	/^        Eigen::Vector3d f; \/\/ forces$/;"	m	class:Geometry::Vertex	access:public
+ftoa	./Utils.cpp	/^ftoa(double d, int decimalPlaces)$/;"	f	namespace:Utils	signature:(double d, int decimalPlaces)
+ftoa	./Utils.h	/^std::string ftoa(double d, int decimalPlaces = 2);$/;"	p	namespace:Utils	signature:(double d, int decimalPlaces = 2)
+info_arch	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_platform	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_version	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+init	./Geometry/Mesh.cpp	/^Mesh::init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)$/;"	f	class:Geometry::Mesh	signature:(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)
+init	./Geometry/Mesh.h	/^        void init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets);$/;"	p	class:Geometry::Mesh	access:public	signature:(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)
+init	./Geometry/Tetrahedron.cpp	/^Tetrahedron::init(const std::vector<Vertex>& vertices)$/;"	f	class:Geometry::Tetrahedron	signature:(const std::vector<Vertex>& vertices)
+init	./Geometry/Tetrahedron.h	/^        void init(const std::vector<Vertex>& vertices);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const std::vector<Vertex>& vertices)
+isWhitespace	./Utils.h	/^inline bool isWhitespace(char c)$/;"	f	namespace:Utils	signature:(char c)
+isnan	./Utils.h	/^inline bool isnan(T value)$/;"	f	namespace:Utils	signature:(T value)
+load	./Geometry/MeshLoader.cpp	/^MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)$/;"	f	class:Geometry::MeshLoader	signature:(const std::string& filename, Geometry::Mesh* pMesh)
+load	./Geometry/MeshLoader.h	/^        static bool load(const std::string& filename, Geometry::Mesh* pMesh);$/;"	p	class:Geometry::MeshLoader	access:public	signature:(const std::string& filename, Geometry::Mesh* pMesh)
+mVerts	./Geometry/Triangle.h	/^        uint32 mVerts[3];$/;"	m	class:Geometry::Triangle	access:public
+main	./CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
+main	./main.cpp	/^main(int arcg,char * argv[])$/;"	f	signature:(int arcg,char * argv[])
+makeRed	./Utils.cpp	/^makeRed(const std::string &s)$/;"	f	namespace:Utils	signature:(const std::string &s)
+makeRed	./Utils.h	/^std::string makeRed(const std::string &s);$/;"	p	namespace:Utils	signature:(const std::string &s)
+mass	./Geometry/Vertex.h	/^        double mass;$/;"	m	class:Geometry::Vertex	access:public
+operator =	./Geometry/Tetrahedron.cpp	/^Tetrahedron::operator =(const Tetrahedron& rhs)$/;"	f	class:Geometry::Tetrahedron	signature:(const Tetrahedron& rhs)
+operator =	./Geometry/Tetrahedron.h	/^        Tetrahedron& operator =(const Tetrahedron& rhs);$/;"	p	class:Geometry::Tetrahedron	access:public	signature:(const Tetrahedron& rhs)
+operator =	./Geometry/Vertex.cpp	/^Vertex& Vertex::operator =(const Vertex& rhs)$/;"	f	class:Geometry::Vertex	signature:(const Vertex& rhs)
+operator =	./Geometry/Vertex.h	/^        Vertex& operator =(const Vertex& rhs);$/;"	p	class:Geometry::Vertex	access:public	signature:(const Vertex& rhs)
+setCol	./Geometry/Tetrahedron.cpp	/^setCol(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)$/;"	f	namespace:__anon1	signature:(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)
+tets	./Geometry/Mesh.h	/^        std::vector<Tetrahedron> tets;$/;"	m	class:Geometry::Mesh	access:public
+u	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+u	./Geometry/Vertex.h	/^        Eigen::Vector3d u; \/\/ material position$/;"	m	class:Geometry::Vertex	access:public
+v	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+v	./Geometry/Vertex.h	/^        Eigen::Vector3d v; \/\/ velocity$/;"	m	class:Geometry::Vertex	access:public
+verts	./Geometry/Mesh.h	/^        std::vector<Vertex> verts;$/;"	m	class:Geometry::Mesh	access:public
+verts	./Geometry/Tetrahedron.h	/^        uint32_t verts[4];$/;"	m	class:Geometry::Tetrahedron	access:public
+w	./Geometry/Tetrahedron.h	/^        Eigen::Vector3d u, v, w;$/;"	m	class:Geometry::Tetrahedron	access:private
+x	./Geometry/Vertex.h	/^        Eigen::Vector3d x; \/\/ world position$/;"	m	class:Geometry::Vertex	access:public
+~Tetrahedron	./Geometry/Tetrahedron.cpp	/^Tetrahedron::~Tetrahedron()$/;"	f	class:Geometry::Tetrahedron	signature:()
+~Tetrahedron	./Geometry/Tetrahedron.h	/^        ~Tetrahedron();$/;"	p	class:Geometry::Tetrahedron	access:public	signature:()
+~Vertex	./Geometry/Vertex.h	/^        ~Vertex() {}$/;"	f	class:Geometry::Vertex	access:public	signature:()

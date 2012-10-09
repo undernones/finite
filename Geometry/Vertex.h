@@ -2,6 +2,7 @@
 #define GEOMETRY_VERTEX_H
 
 #include <Eigen>
+#include <vector>
 
 namespace Geometry
 {
@@ -21,6 +22,8 @@ namespace Geometry
 
         Vertex& operator =(const Vertex& rhs);
     };
+
+    typedef std::vector<Vertex> VertexList ;
 }
 
 #endif // GEOMETRY_VERTEX_H

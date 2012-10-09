@@ -14,6 +14,7 @@ namespace Geometry
         std::vector<Tetrahedron> tets;
 
         void init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets);
+        double volume() const;
     };
 }
 

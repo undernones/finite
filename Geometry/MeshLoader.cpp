@@ -9,7 +9,7 @@ namespace Geometry
 bool
 MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)
 {
-    std::vector<Vertex> verts;
+    VertexList verts;
     std::vector<Tetrahedron> tets;
 
 	std::ifstream in(filename.c_str(), std::ios::in);
@@ -25,6 +25,7 @@ MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)
 			Vertex vertex;
             vertex.x = Eigen::Vector3d(x, y, z);
             vertex.u = vertex.x;
+            vertex.x(2) *= 2;
             verts.push_back(vertex);
 		} else if (c == 't') {
 			uint32_t a, b, c, d;

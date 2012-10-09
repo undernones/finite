@@ -14,4 +14,14 @@ Mesh::init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tet
     }
 }
 
+double
+Mesh::volume() const
+{
+    double result = 0;
+    for (const Tetrahedron& t : tets) {
+        result += t.volume();
+    }
+    return result;
+}
+
 }
