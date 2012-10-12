@@ -14,6 +14,16 @@ setCol(Eigen::Matrix3d* m, uint32_t col, const Eigen::Vector3d& v)
     (*m)(2, col) = v(2);
 }
 
+Eigen::Vector3d
+getCol(const Eigen::Matrix3d& m, uint32_t col)
+{
+    return Eigen::Vector3d(
+        m(0, col),
+        m(1, col),
+        m(2, col)
+    );
+}
+
 } // end unnamed namespace
 
 
@@ -66,8 +76,8 @@ Tetrahedron::init(const VertexList& verts)
     updateX(verts);
     updateBeta(verts);
     computeVolume();
+    computeNormals();
 
-	//	iter->computeNormals();
 	//	iter->computeMasses();
 }
 
@@ -102,3 +112,16 @@ Tetrahedron::computeVolume()
     mVolume = ONE_6TH * mBasis.determinant();
 }
 
+void
+Tetrahedron::computeNormals()
+{
+    Eigen::Vector3d cols[] = {
+        getCol(mBasis, 0),
+        getCol(mBasis, 1),
+        getCol(mBasis, 2),
+    };
+    mNormals[0] = ONE_6TH * cols[0].cross(cols[1]);
+    mNormals[1] = ONE_6TH * cols[1].cross(cols[2]);
+    mNormals[2] = ONE_6TH * cols[2].cross(cols[1]);
+    mNormals[3] = -(mNormals[0] + mNormals[1] + mNormals[2]);
+}

@@ -30,6 +30,7 @@ private:
     double mVolume;
 
     void computeVolume();
+    void computeNormals();
 };
 
 #endif // GEOMETRY_TETRAHEDRON_H
