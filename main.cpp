@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdexcept>
 #include "Utils.h"
-#include "Geometry/Vertex.h"
-#include "Geometry/Tetrahedron.h"
-#include "Geometry/Mesh.h"
-#include "Geometry/MeshLoader.h"
+#include "Vertex.h"
+#include "Tetrahedron.h"
+#include "Mesh.h"
+#include "MeshLoader.h"
 
 namespace
 {
@@ -16,8 +16,6 @@ const double LAMBDA = 8000;
 const double MU = 8000;
 
 }
-
-using namespace Geometry;
 
 int
 main(int argc, char* argv[])

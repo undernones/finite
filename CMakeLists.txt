@@ -36,10 +36,10 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g")
 set(FINITE_SRC
     main.cpp
     Utils.cpp
-    Geometry/Mesh.cpp
-    Geometry/MeshLoader.cpp
-    Geometry/Tetrahedron.cpp
-    Geometry/Vertex.cpp
+    Mesh.cpp
+    MeshLoader.cpp
+    Tetrahedron.cpp
+    Vertex.cpp
 )
 #set(VIEWER_SRC main.cpp)
 

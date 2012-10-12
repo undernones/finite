@@ -1,8 +1,5 @@
 #include "Vertex.h"
 
-namespace Geometry
-{
-
 Vertex::Vertex() :
     x(0, 0, 0),
     u(0, 0, 0),
@@ -33,4 +30,3 @@ Vertex& Vertex::operator =(const Vertex& rhs)
     return *this;
 }
 
-}

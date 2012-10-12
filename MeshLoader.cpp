@@ -3,11 +3,8 @@
 #include "Mesh.h"
 #include "Tetrahedron.h"
 
-namespace Geometry
-{
-
 bool
-MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)
+MeshLoader::load(const std::string& filename, Mesh* pMesh)
 {
     VertexList verts;
     std::vector<Tetrahedron> tets;
@@ -42,17 +39,5 @@ MeshLoader::load(const std::string& filename, Geometry::Mesh* pMesh)
 	in.close();
 
     pMesh->init(verts, tets);
-	//model.computeSurface();
-
-	//std::vector<Tetrahedron>::iterator iter;
-	//for (iter = model.m_tetrahedra.begin(); iter != model.m_tetrahedra.end(); ++iter)
-	//{
-	//	iter->computeVolume();
-	//	iter->computeBeta();
-	//	iter->computeNormals();
-	//	iter->computeMasses();
-	//}
     return true;
-}
-
 }

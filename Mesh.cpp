@@ -1,8 +1,5 @@
 #include "Mesh.h"
 
-namespace Geometry
-{
-
 void
 Mesh::init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets)
 {
@@ -22,6 +19,4 @@ Mesh::volume() const
         result += t.volume();
     }
     return result;
-}
-
 }
