@@ -38,12 +38,14 @@ set(FINITE_SRC
     Utils.cpp
     Mesh.cpp
     MeshLoader.cpp
+    Options.cpp
     Tetrahedron.cpp
+    Timing.cpp
     Vertex.cpp
 )
 #set(VIEWER_SRC main.cpp)
 
-set(LIBS boost_program_options-mt)
+set(LIBS gflags)
 
 IF(APPLE)
     INCLUDE_DIRECTORIES (/System/Library/Frameworks)

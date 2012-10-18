@@ -2,7 +2,6 @@
 #define UTILS_H
 
 #include <string>
-#include <boost/math/special_functions/fpclassify.hpp>
 
 namespace Utils
 {
@@ -17,12 +16,6 @@ inline bool isWhitespace(char c)
 inline double clamp(double x, double min, double max)
 {
     return std::min(max, std::max(min, x));
-}
-
-template<class T>
-inline bool isnan(T value)
-{
-    return boost::math::isnan(value);
 }
 
 inline double cube(double value)

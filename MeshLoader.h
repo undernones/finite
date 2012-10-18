@@ -1,7 +1,7 @@
 #ifndef MESH_LOADER_H
 #define MESH_LOADER_H
 
-#include "Mesh.h"
+#include <string>
 
 class Mesh;
 class MeshLoader
