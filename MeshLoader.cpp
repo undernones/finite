@@ -4,7 +4,7 @@
 #include "Tetrahedron.h"
 
 bool
-MeshLoader::load(const std::string& filename, Mesh* pMesh)
+MeshLoader::load(const std::string& filename, Mesh* pMesh, double density)
 {
     VertexList verts;
     std::vector<Tetrahedron> tets;
@@ -38,6 +38,6 @@ MeshLoader::load(const std::string& filename, Mesh* pMesh)
 	}
 	in.close();
 
-    pMesh->init(verts, tets);
+    pMesh->init(verts, tets, density);
     return true;
 }

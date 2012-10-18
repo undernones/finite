@@ -33,6 +33,10 @@ set(CMAKE_CXX_FLAGS "-Qunused-arguments -std=c++11 -stdlib=libc++ -Wall -Wno-lon
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2 -Werror")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g")
 
+IF(CMAKE_BUILD_TYPE MATCHES "Release")
+    add_definitions(-DNDEBUG)
+ENDIF(CMAKE_BUILD_TYPE MATCHES "Release")
+
 set(FINITE_SRC
     main.cpp
     Utils.cpp

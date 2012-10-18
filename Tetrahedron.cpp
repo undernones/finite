@@ -71,14 +71,13 @@ Tetrahedron::operator =(const Tetrahedron& rhs)
 }
 
 void
-Tetrahedron::init(const VertexList& verts)
+Tetrahedron::init(const VertexList& verts, double density)
 {
     updateX(verts);
     updateBeta(verts);
     computeVolume();
     computeNormals();
-
-	//	iter->computeMasses();
+    computeMasses(density);
 }
 
 const Eigen::Matrix3d&
@@ -124,4 +123,9 @@ Tetrahedron::computeNormals()
     mNormals[1] = ONE_6TH * cols[1].cross(cols[2]);
     mNormals[2] = ONE_6TH * cols[2].cross(cols[1]);
     mNormals[3] = -(mNormals[0] + mNormals[1] + mNormals[2]);
+}
+
+void
+Tetrahedron::computeMasses(double density)
+{
 }

@@ -13,7 +13,7 @@ public:
 
     Tetrahedron& operator =(const Tetrahedron& rhs);
 
-    void init(const VertexList& verts);
+    void init(const VertexList& verts, double density);
 
     double volume() const { return mVolume; }
     const Eigen::Matrix3d& updateX(const VertexList& verts);
@@ -31,6 +31,7 @@ private:
 
     void computeVolume();
     void computeNormals();
+    void computeMasses(double density);
 };
 
 #endif // GEOMETRY_TETRAHEDRON_H

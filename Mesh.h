@@ -11,7 +11,7 @@ public:
     std::vector<Vertex> verts;
     std::vector<Tetrahedron> tets;
 
-    void init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets);
+    void init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets, double density);
     double volume() const;
 };
 

@@ -1,0 +1,58 @@
+#include <mutex>
+#include <thread>
+
+...
+
+std::mutex muxCout;
+
+...
+
+void
+stuff(const std::vector<Tetrahedron>& tets, uint32_t lo, uint32_t hi)
+{
+    std::vector<Tetrahedron>::const_iterator beg = tets.begin() + lo;
+    std::vector<Tetrahedron>::const_iterator end = tets.begin() + hi;
+    std::vector<Tetrahedron>::const_iterator it;
+    for (it = beg; it != end && it != tets.end(); ++it) {
+        const Tetrahedron& t = *it;
+
+        Eigen::Matrix3d F = t.X() * t.Beta();
+        Eigen::Matrix3d strain = 0.5 * (F + F.transpose()) - Eigen::Matrix3d::Identity();
+
+        double d = Options::lambda() * strain.trace();
+        Eigen::Matrix3d diag;
+        diag << d, 0, 0,
+                0, d, 0,
+                0, 0, d;
+        Eigen::Matrix3d stress = 2 * Options::mu() * strain + diag;
+
+#if 0
+        {
+            std::lock_guard<std::mutex> guard(muxCout);
+            std::cout << "mat:\n" << stress << std::endl;
+        }
+#endif
+    }
+}
+
+...
+
+int
+main(...)
+{
+    ...
+
+        const uint32_t threadCount = std::thread::hardware_concurrency();
+        const uint32_t blockSize = m.tets.size() / threadCount;
+        std::vector<std::thread> threads;
+        for (uint32_t i = 0; i < threadCount; ++i) {
+            uint32_t lo = i * blockSize;
+            uint32_t hi = lo + blockSize - 1;
+            threads.push_back(std::thread(stuff, m.tets, lo, hi));
+        }
+        for (std::thread& t : threads) {
+            t.join();
+        }
+
+    ...
+}

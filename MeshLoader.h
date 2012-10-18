@@ -7,7 +7,7 @@ class Mesh;
 class MeshLoader
 {
 public:
-    static bool load(const std::string& filename, Mesh* pMesh);
+    static bool load(const std::string& filename, Mesh* pMesh, double density);
 
 private:
     MeshLoader() {}
