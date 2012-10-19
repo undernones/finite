@@ -21,6 +21,9 @@ public:
     const Eigen::Matrix3d& updateBeta(const VertexList& verts);
     const Eigen::Matrix3d& Beta() const { return mBeta; }
 
+    const uint32_t* vertices() const { return mVix; }
+    const Eigen::Vector3d* normals() const { return mNormals; }
+
 private:
     uint32_t mVix[4]; // vertex indices
     Eigen::Matrix3d mBasis;
