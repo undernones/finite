@@ -22,7 +22,7 @@ MeshLoader::load(const std::string& filename, Mesh* pMesh, double density)
 			Vertex vertex;
             vertex.x = Eigen::Vector3d(x, y, z);
             vertex.u = vertex.x;
-            //vertex.x(2) *= 2;
+            //vertex.x(2) *= 0.01;
             verts.push_back(vertex);
 		} else if (c == 't') {
 			uint32_t a, b, c, d;

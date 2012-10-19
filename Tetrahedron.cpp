@@ -71,13 +71,13 @@ Tetrahedron::operator =(const Tetrahedron& rhs)
 }
 
 void
-Tetrahedron::init(const VertexList& verts, double density)
+Tetrahedron::init(VertexList& verts, double density)
 {
     updateX(verts);
     updateBeta(verts);
     computeVolume();
     computeNormals();
-    computeMasses(density);
+    computeMasses(verts, density);
 }
 
 const Eigen::Matrix3d&
@@ -105,6 +105,33 @@ Tetrahedron::updateBeta(const VertexList& verts)
     return mBeta;
 }
 
+const std::vector<uint32_t>&
+Tetrahedron::vert2normals(uint32_t index)
+{
+    static std::vector<uint32_t> v[4];
+    static bool firstTime = true;
+    if (firstTime) {
+        firstTime = false;
+
+        v[0].push_back(0);
+        v[0].push_back(1);
+        v[0].push_back(2);
+
+        v[1].push_back(0);
+        v[1].push_back(3);
+        v[1].push_back(1);
+
+        v[2].push_back(0);
+        v[2].push_back(2);
+        v[2].push_back(3);
+
+        v[3].push_back(1);
+        v[3].push_back(3);
+        v[3].push_back(2);
+    }
+    return v[index];
+}
+
 void
 Tetrahedron::computeVolume()
 {
@@ -126,6 +153,11 @@ Tetrahedron::computeNormals()
 }
 
 void
-Tetrahedron::computeMasses(double density)
+Tetrahedron::computeMasses(VertexList& verts, double density)
 {
+    double mass_4 = 0.25 * mVolume * density;
+    verts[mVix[0]].mass += mass_4;
+    verts[mVix[1]].mass += mass_4;
+    verts[mVix[2]].mass += mass_4;
+    verts[mVix[3]].mass += mass_4;
 }

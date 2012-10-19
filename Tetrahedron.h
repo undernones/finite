@@ -13,7 +13,7 @@ public:
 
     Tetrahedron& operator =(const Tetrahedron& rhs);
 
-    void init(const VertexList& verts, double density);
+    void init(VertexList& verts, double density);
 
     double volume() const { return mVolume; }
     const Eigen::Matrix3d& updateX(const VertexList& verts);
@@ -23,6 +23,8 @@ public:
 
     const uint32_t* vertices() const { return mVix; }
     const Eigen::Vector3d* normals() const { return mNormals; }
+
+    static const std::vector<uint32_t>& vert2normals(uint32_t index);
 
 private:
     uint32_t mVix[4]; // vertex indices
@@ -34,7 +36,7 @@ private:
 
     void computeVolume();
     void computeNormals();
-    void computeMasses(double density);
+    void computeMasses(VertexList& verts, double density);
 };
 
 #endif // GEOMETRY_TETRAHEDRON_H

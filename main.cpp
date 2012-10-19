@@ -18,34 +18,6 @@ std::vector<Eigen::Matrix3d> sDeformations;
 std::vector<Eigen::Matrix3d> sStrains;
 std::vector<Eigen::Matrix3d> sStresses;
 
-
-const std::vector<uint32_t>&
-index2normals(uint32_t index)
-{
-    static std::vector<uint32_t> v[4];
-    static bool firstTime = true;
-    if (firstTime) {
-        firstTime = false;
-
-        v[0].push_back(0);
-        v[0].push_back(1);
-        v[0].push_back(2);
-
-        v[1].push_back(0);
-        v[1].push_back(3);
-        v[1].push_back(1);
-
-        v[2].push_back(0);
-        v[2].push_back(2);
-        v[2].push_back(3);
-
-        v[3].push_back(1);
-        v[3].push_back(3);
-        v[3].push_back(2);
-    }
-    return v[index];
-}
-
 }
 
 // --------------------------------------------------------------------------
@@ -102,7 +74,7 @@ step(Mesh *mesh, double dt)
         const uint32_t *verts = tet.vertices();
         for (int i = 0; i < 4; i++) {
             Eigen::Vector3d norms;
-            for (uint32_t normIndex : index2normals(i)) {
+            for (uint32_t normIndex : Tetrahedron::vert2normals(i)) {
                 norms += tet.normals()[normIndex];
             }
             Vertex& vert = mesh->verts[verts[i]];
