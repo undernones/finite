@@ -46,6 +46,7 @@ set(FINITE_SRC
     Tetrahedron.cpp
     Timing.cpp
     Vertex.cpp
+    World.cpp
 )
 #set(VIEWER_SRC main.cpp)
 
