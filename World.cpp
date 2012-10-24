@@ -1,5 +1,5 @@
 #include "World.h"
-#include "Mesh.h"
+#include "MeshLoader.h"
 #include "Options.h"
 
 using Eigen::Matrix3d;
@@ -56,19 +56,17 @@ computeStresses(const std::vector<Matrix3d>& deformations,
 // --------------------------------------------------------------------------
 
 void
-computeForces(const std::vector<Matrix3d>& stresses, Mesh *mesh)
+computeForces(const std::vector<Matrix3d>& stresses, Mesh& mesh)
 {
-    assert(mesh != NULL);
-
     std::vector<Matrix3d>::const_iterator stress_it = stresses.begin();
-    for (const Tetrahedron& tet : mesh->tets) {
+    for (const Tetrahedron& tet : mesh.tets) {
         const uint32_t *verts = tet.vertices();
         for (int i = 0; i < 4; i++) {
             Eigen::Vector3d norms;
             for (uint32_t normIndex : Tetrahedron::vert2normals(i)) {
                 norms += tet.normals()[normIndex];
             }
-            Vertex& vert = mesh->verts[verts[i]];
+            Vertex& vert = mesh.verts[verts[i]];
             vert.f += *stress_it * norms;
         }
     }
@@ -78,20 +76,20 @@ computeForces(const std::vector<Matrix3d>& stresses, Mesh *mesh)
 }
 
 
-Mesh* World::sMesh;
+Mesh World::sMesh;
 std::vector<Matrix3d> World::sDeformations;
 std::vector<Matrix3d> World::sStrains;
 std::vector<Matrix3d> World::sStresses;
 
 void
-World::init(Mesh* mesh)
+World::init(const std::string& filename)
 {
-    assert(mesh != NULL);
-
-    sMesh = mesh;
-    sDeformations.resize(mesh->tets.size());
-    sStrains.resize(mesh->tets.size());
-    sStresses.resize(mesh->tets.size());
+    if (!MeshLoader::load(filename, &sMesh, Options::density())) {
+        throw std::exception();
+    }
+    sDeformations.resize(sMesh.tets.size());
+    sStrains.resize(sMesh.tets.size());
+    sStresses.resize(sMesh.tets.size());
 }
 
 void
@@ -103,19 +101,20 @@ World::step(double dt)
     std::vector<Matrix3d>::iterator stress_it;
 
     // Clear forces
-    for (Vertex& v : sMesh->verts) {
+    for (Vertex& v : sMesh.verts) {
         v.f = Eigen::Vector3d(0, 0, 0);
     }
 
-    computeDeformations(sMesh->tets, sDeformations);
+    computeDeformations(sMesh.tets, sDeformations);
     computeStrains(sDeformations, sStrains);
     computeStresses(sDeformations, sStrains, sStresses);
     computeForces(sStresses, sMesh);
 
     // Integrate
-    for (Vertex& v : sMesh->verts) {
+    for (Vertex& v : sMesh.verts) {
         Eigen::Vector3d a = v.f / v.mass;
         v.v += dt * a;
         v.x += dt * v.v;
     }
 }
+

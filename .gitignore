@@ -13,11 +13,8 @@
 
 CMakeCache.txt
 CMakeFiles
-
 Makefile
-
 cmake_install.cmake
-
-finite
-
 tags
+gui
+headless

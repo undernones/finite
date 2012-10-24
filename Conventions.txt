@@ -1,0 +1,5 @@
+* Unless it is otherwise more legible, prefer to put ampersands and asterisks
+  adjacent to the type, not the variable name.
+
+* When choosing between making a parameter a reference or a pointer, prefer a
+  reference, even if it is non-const.

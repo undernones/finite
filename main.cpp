@@ -1,15 +1,8 @@
 #include <iostream>
 #include <stdexcept>
-#include <vector>
-#include <Eigen>
 #include "Utils.h"
-#include "Tetrahedron.h"
-#include "Mesh.h"
-#include "MeshLoader.h"
 #include "Options.h"
 #include "World.h"
-
-using Eigen::Matrix3d;
 
 namespace
 {
@@ -24,13 +17,7 @@ main(int argc, char* argv[])
 {
     try {
         Options::init(&argc, &argv);
-
-        Mesh mesh;
-        if (!MeshLoader::load(Options::meshFile(), &mesh, Options::density())) {
-            throw std::exception();
-        }
-
-        World::init(&mesh);
+        World::init(Options::meshFile());
 
         uint32_t totalSteps = Options::duration() / Options::dt();
         std::cout << "Duration:    " << Options::duration() << "s" << std::endl

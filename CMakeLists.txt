@@ -37,8 +37,7 @@ IF(CMAKE_BUILD_TYPE MATCHES "Release")
     add_definitions(-DNDEBUG)
 ENDIF(CMAKE_BUILD_TYPE MATCHES "Release")
 
-set(FINITE_SRC
-    main.cpp
+set(CORE_SRC
     Utils.cpp
     Mesh.cpp
     MeshLoader.cpp
@@ -48,26 +47,24 @@ set(FINITE_SRC
     Vertex.cpp
     World.cpp
 )
-#set(VIEWER_SRC main.cpp)
-
 set(LIBS gflags)
 
 IF(APPLE)
-    INCLUDE_DIRECTORIES (/System/Library/Frameworks)
-    FIND_LIBRARY(GL_LIBRARY OpenGL)
-    FIND_LIBRARY(GLUT_LIBRARY GLUT)
-    SET(EXTRA_LIBS ${GL_LIBRARY} ${GLUT_LIBRARY})
+    include_directories(/System/Library/Frameworks)
+    find_library(GL_LIBRARY OpenGL)
+    find_library(GLUT_LIBRARY GLUT)
+    set(EXTRA_LIBS ${GL_LIBRARY} ${GLUT_LIBRARY})
 
 #add_subdirectory(viewer)
 
-#add_executable(viewer ${VIEWER_SRC})
-#target_link_libraries(viewer spline ${LIBS} ${EXTRA_LIBS})
 ENDIF(APPLE)
 
 #add_library(spline ${SPLINE_SRC})
 #target_link_libraries(spline ${LIBS} ${EXTRA_LIBS})
-add_executable(finite ${FINITE_SRC})
-target_link_libraries(finite ${LIBS} ${EXTRA_LIBS})
+add_executable(headless main.cpp ${CORE_SRC})
+target_link_libraries(headless ${LIBS})
+add_executable(gui gui.cpp ${CORE_SRC})
+target_link_libraries(gui ${LIBS} ${EXTRA_LIBS})
 
 
 MESSAGE(STATUS)
