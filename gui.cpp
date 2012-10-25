@@ -36,7 +36,7 @@ initGl()
     glEnable(GL_CULL_FACE);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_POLYGON_SMOOTH);
-    glClearColor(0.3, 0.3, 0.3, 0);
+    glClearColor(0.1, 0.1, 0.1, 0);
     glClearDepth(1);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
@@ -81,17 +81,33 @@ redraw()
     glRotatef(gRotX, 1, 0, 0);
     glRotatef(gRotY, 0, 1, 0);
 
-    glColor3d(0.8, 0, 0);
-
     glLightfv(GL_LIGHT0, GL_POSITION, gLightPos);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, gLightColor);
     glLightfv(GL_LIGHT0, GL_SPECULAR, gLightColor);
     glLightfv(GL_LIGHT0, GL_AMBIENT, gLightAmbient);
 
     // Draw points
+    glColor3d(0.8, 0, 0);
     glBegin(GL_POINTS);
     for (const Vertex& v : World::mesh().verts) {
         glVertex3d(v.x[0], v.x[1], v.x[2]);
+    }
+    glEnd();
+
+    glColor3d(0.8, 0.8, 0.8);
+    glBegin(GL_LINES);
+    for (const Vertex& v : World::mesh().verts) {
+        Vector3d end = v.x + v.f;
+        glVertex3d(v.x[0], v.x[1], v.x[2]);
+        glVertex3d(end[0], end[1], end[2]);
+    }
+    glColor3d(0, 0.8, 0);
+    for (const Tetrahedron& t : World::mesh().tets) {
+        const Vector3d* norms = t.normals();
+        for (int i = 0; i < 4; ++i) {
+            glVertex3d(0, 0, 0);
+            glVertex3d(norms[i][0], norms[i][1], norms[i][2]);
+        }
     }
     glEnd();
 
@@ -229,7 +245,7 @@ main(int argc, char* argv[])
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseDrag);
 
-    gEye = Vector3d(0, 4, 10);
+    gEye = Vector3d(0, 2, 4);
     gLookAt = Vector3d(0, 0, 0);
 
     glutMainLoop();
