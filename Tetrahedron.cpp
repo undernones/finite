@@ -119,10 +119,10 @@ Tetrahedron::vert2normals(uint32_t index)
 
         v[1].push_back(0);
         v[1].push_back(3);
-        v[1].push_back(1);
+        v[1].push_back(2);
 
         v[2].push_back(0);
-        v[2].push_back(2);
+        v[2].push_back(1);
         v[2].push_back(3);
 
         v[3].push_back(1);
