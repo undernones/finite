@@ -1,49 +1,135 @@
 #include "Options.h"
-#include <gflags/gflags.h>
+#include <getopt.h>
 
 namespace
 {
 
-DEFINE_string(framesDir, "frames", "Directory where frames and other data get dumped");
-DEFINE_string(restoreFile, "???", "Checkpoint file for restoring a simulation");
-DEFINE_string(meshFile, "meshes/bunny.mesh", "Mesh file");
-DEFINE_double(dt, 1.0 / 120, "Timestep");
-DEFINE_double(fps, 30, "Number of frames to generate per second");
-DEFINE_double(duration, 10, "Length of simulation in playback time");
-DEFINE_int32(framesPerChkpt, 10, "How often to generate checkpoint files");
-DEFINE_bool(disableChkpts, false, "Whether to disable the saving of checkpoints");
-DEFINE_double(density, 1000, "Material density. Defaults to that of water.");
-DEFINE_double(lambda, 8000, "Lame constant preserving volume");
-DEFINE_double(mu, 8000, "Lame constant of stiffness");
-DEFINE_double(friction, 0.05, "Tangential friction with obstacles");
-DEFINE_double(flowRate, 0, "Rate of plastic flow");
-DEFINE_double(yieldPoint, 2000, "Stress level at which plastic flow begins");
-DEFINE_double(K, 0, "Work hardening (+ values) or softening (- values)");
-DEFINE_double(gravity, -9.81, "Acceleration due to gravity in the -y direction");
+const std::string INVALID_FILE("???");
+
+int disable_chkpts = 0;
+std::string OPT_framesDir("frames");
+std::string OPT_restoreFile(INVALID_FILE);
+std::string OPT_meshFile("meshes/tet.mesh");
+double OPT_dt = 1.0 / 120;
+uint32_t OPT_fps = 30;
+double OPT_duration = 10;
+uint32_t OPT_framesPerChkpt = 10;
+double OPT_density = 1000;
+double OPT_lambda = 8000;
+double OPT_mu = 8000;
+double OPT_friction = 0.05;
+double OPT_flowRate = 0;
+double OPT_yieldPoint = 2000;
+double OPT_hardening = 0;
+double OPT_gravity = -9.81;
+
+struct option long_options[] = {
+    { "frames_dir",       required_argument, NULL,            'o' }, // output
+    { "restore_file",     required_argument, NULL,            'r' }, // restore
+    { "mesh_file",        required_argument, NULL,            'v' }, // vertices
+    { "dt",               required_argument, NULL,            't' }, // time
+    { "fps",              required_argument, NULL,            'f' }, // fps
+    { "duration",         required_argument, NULL,            'u' }, // dUration
+    { "frames_per_chkpt", required_argument, NULL,            'c' }, // chkpts
+    { "disable_chkpts",   no_argument,       &disable_chkpts,  1  },
+    { "density",          required_argument, NULL,            'd' }, // density
+    { "lambda",           required_argument, NULL,            'l' }, // lambda
+    { "mu",               required_argument, NULL,            'm' }, // mu
+    { "friction",         required_argument, NULL,            'k' }, // friKtion
+    { "flow_rate",        required_argument, NULL,            'w' }, // floW rate
+    { "yield_point",      required_argument, NULL,            'y' }, // yield
+    { "hardening",        required_argument, NULL,            'h' }, // hardening
+    { "gravity",          required_argument, NULL,            'g' }, // gravity
+};
 
 }
 
-std::string Options::framesDir() { return FLAGS_framesDir; }
-std::string Options::restoreFile() { return FLAGS_restoreFile; }
-std::string Options::meshFile() { return FLAGS_meshFile; }
-double Options::dt() { return FLAGS_dt; }
-double Options::fps() { return FLAGS_fps; }
-double Options::duration() { return FLAGS_duration; }
-uint32_t Options::framesPerChkpt() { return FLAGS_framesPerChkpt; }
-bool Options::disableChkpts() { return FLAGS_disableChkpts; }
-double Options::density() { return FLAGS_density; }
-double Options::lambda() { return FLAGS_lambda; }
-double Options::mu() { return FLAGS_mu; }
-double Options::friction() { return FLAGS_friction; }
-double Options::flowRate() { return FLAGS_flowRate; }
-double Options::yieldPoint() { return FLAGS_yieldPoint; }
-double Options::K() { return FLAGS_K; }
-double Options::gravity() { return FLAGS_gravity; }
+std::string Options::framesDir() { return OPT_framesDir; }
+std::string Options::restoreFile() { return OPT_restoreFile; }
+std::string Options::meshFile() { return OPT_meshFile; }
+double Options::dt() { return OPT_dt; }
+uint32_t Options::fps() { return OPT_fps; }
+double Options::duration() { return OPT_duration; }
+uint32_t Options::framesPerChkpt() { return OPT_framesPerChkpt; }
+bool Options::disableChkpts() { return disable_chkpts != 0; }
+double Options::density() { return OPT_density; }
+double Options::lambda() { return OPT_lambda; }
+double Options::mu() { return OPT_mu; }
+double Options::friction() { return OPT_friction; }
+double Options::flowRate() { return OPT_flowRate; }
+double Options::yieldPoint() { return OPT_yieldPoint; }
+double Options::K() { return OPT_hardening; }
+double Options::gravity() { return OPT_gravity; }
 
 bool
-Options::init(int *argc, char ***argv)
+Options::init(int argc, char* argv[])
 {
-    //google::SetUsageMessage("use it wisely");
-    //google::SetVersionString("0.00");
-    return google::ParseCommandLineFlags(argc, argv, true);
+    int option_index = 0;
+    int c = getopt_long(argc, argv, "", long_options, &option_index);
+    while (c >= 0) {
+        switch (c) {
+        case 'o':
+            OPT_framesDir = optarg;
+            break;
+
+        case 'r':
+            OPT_restoreFile = optarg;
+            break;
+
+        case 'v':
+            OPT_meshFile = optarg;
+            break;
+
+        case 't':
+            OPT_dt = atof(optarg);
+            break;
+
+        case 'f':
+            OPT_fps = atoi(optarg);
+            break;
+
+        case 'u':
+            OPT_duration = atof(optarg);
+            break;
+
+        case 'c':
+            OPT_framesPerChkpt = atof(optarg);
+            break;
+
+        case 'd':
+            OPT_density = atof(optarg);
+            break;
+
+        case 'l':
+            OPT_lambda = atof(optarg);
+            break;
+
+        case 'm':
+            OPT_mu = atof(optarg);
+            break;
+
+        case 'k':
+            OPT_friction = atof(optarg);
+            break;
+
+        case 'w':
+            OPT_flowRate = atof(optarg);
+            break;
+
+        case 'y':
+            OPT_yieldPoint = atof(optarg);
+            break;
+
+        case 'h':
+            OPT_hardening = atof(optarg);
+            break;
+
+        case 'g':
+            OPT_gravity = atof(optarg);
+            break;
+        }
+        c = getopt_long(argc, argv, "", long_options, &option_index);
+    }
+
+    return true;
 }

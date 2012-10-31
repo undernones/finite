@@ -228,7 +228,7 @@ mouseDrag(int x, int y)
 int
 main(int argc, char* argv[])
 {
-    Options::init(&argc, &argv);
+    Options::init(argc, argv);
     World::init(Options::meshFile());
 
     glutInit(&argc, argv);
@@ -245,7 +245,7 @@ main(int argc, char* argv[])
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseDrag);
 
-    gEye = Vector3d(0, 2, 4);
+    gEye = Vector3d(0, 4, 10);
     gLookAt = Vector3d(0, 0, 0);
 
     glutMainLoop();

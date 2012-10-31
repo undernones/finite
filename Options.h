@@ -10,7 +10,7 @@ public:
     static std::string restoreFile();
     static std::string meshFile();
     static double dt();
-    static double fps();
+    static uint32_t fps();
     static double duration();
     static uint32_t framesPerChkpt();
     static bool disableChkpts();
@@ -23,7 +23,7 @@ public:
     static double K();
     static double gravity();
 
-    static bool init(int *argc, char ***argv);
+    static bool init(int argc, char* argv[]);
 
 private:
     Options();

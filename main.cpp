@@ -16,7 +16,7 @@ int
 main(int argc, char* argv[])
 {
     try {
-        Options::init(&argc, &argv);
+        Options::init(argc, argv);
         World::init(Options::meshFile());
 
         uint32_t totalSteps = Options::duration() / Options::dt();

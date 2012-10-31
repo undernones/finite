@@ -30,6 +30,8 @@ computeStrains(const std::vector<Matrix3d>& deformations,
         const Matrix3d& F = *def_it;
         // Linear Cauchy strain
         *strain_it = 0.5 * (F + F.transpose()) - Matrix3d::Identity();
+        // Quadratic Green strain
+        //*strain_it = 0.5 * (F * F.transpose() - Matrix3d::Identity());
     }
 }
 // --------------------------------------------------------------------------
