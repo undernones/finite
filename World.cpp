@@ -1,5 +1,6 @@
 #include "World.h"
 #include "MeshLoader.h"
+#include "Obstacle.h"
 #include "Options.h"
 
 using Eigen::Matrix3d;
@@ -83,6 +84,7 @@ Mesh World::sMesh;
 std::vector<Matrix3d> World::sDeformations;
 std::vector<Matrix3d> World::sStrains;
 std::vector<Matrix3d> World::sStresses;
+std::vector<Obstacle*> World::sObstacles;
 
 void
 World::init(const std::string& filename)
@@ -118,6 +120,13 @@ World::step(double dt)
         Eigen::Vector3d a = v.f / v.mass;
         v.v += dt * a;
         v.x += dt * v.v;
+    }
+
+    // Collide
+    for (auto o : sObstacles) {
+        for (auto v : sMesh.verts) {
+            o->bounce(v);
+        }
     }
 }
 

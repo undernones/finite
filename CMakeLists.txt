@@ -41,6 +41,7 @@ set(CORE_SRC
     Utils.cpp
     Mesh.cpp
     MeshLoader.cpp
+    Obstacle.cpp
     Options.cpp
     Tetrahedron.cpp
     Timing.cpp

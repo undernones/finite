@@ -6,6 +6,7 @@
 #include <Eigen>
 #include "Mesh.h"
 
+class Obstacle;
 class World
 {
 public:
@@ -24,6 +25,8 @@ private:
     static std::vector<Eigen::Matrix3d> sDeformations;
     static std::vector<Eigen::Matrix3d> sStrains;
     static std::vector<Eigen::Matrix3d> sStresses;
+
+    static std::vector<Obstacle*> sObstacles;
 };
 
 #endif // WORLD_H
