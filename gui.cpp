@@ -1,4 +1,5 @@
 #include <iostream>
+#include <thread>
 #include <Eigen>
 #include "gls.h"
 #include "Options.h"
@@ -137,13 +138,8 @@ resize(GLsizei width, GLsizei height)
 GLvoid
 idle()
 {
-    static uint32_t totalSteps = Options::duration() / Options::dt();
-    static uint32_t i = 0;
-    if (i < totalSteps) {
-        World::step(Options::dt());
-        i++;
-        glutPostRedisplay();
-    }
+    // Constanly redraw
+    glutPostRedisplay();
 }
 
 GLvoid
@@ -247,6 +243,18 @@ main(int argc, char* argv[])
 
     gEye = Vector3d(0, 4, 10);
     gLookAt = Vector3d(0, 0, 0);
+
+    // Launch the simulation thread.
+    std::thread t([]() {
+        static uint32_t totalSteps = Options::duration() / Options::dt();
+        static uint32_t i = 0;
+        for (; i < totalSteps; ++i) {
+            World::step(Options::dt());
+        }
+
+        // Let the user know when the simulation has finished.
+        std::cout << "Done!" << std::endl;
+    });
 
     glutMainLoop();
     return 0;
