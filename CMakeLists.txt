@@ -43,6 +43,7 @@ set(CORE_SRC
     MeshLoader.cpp
     Obstacle.cpp
     Options.cpp
+    PlaneObstacle.cpp
     Tetrahedron.cpp
     Timing.cpp
     Vertex.cpp

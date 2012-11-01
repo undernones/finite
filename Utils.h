@@ -23,6 +23,11 @@ inline double cube(double value)
     return value * value * value;
 }
 
+inline double sign(double x)
+{
+    return (x < 0) ? -1 : 1;
+}
+
 std::string makeRed(const std::string &s);
 void error(const std::string &s);
 std::string ftoa(double d, int decimalPlaces = 2);
