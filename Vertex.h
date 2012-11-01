@@ -13,6 +13,7 @@ public:
     Eigen::Vector3d f; // forces
 
     double mass;
+    uint32_t index;
 
     Vertex();
     Vertex(const Vertex& other);

@@ -5,7 +5,8 @@ Vertex::Vertex() :
     u(0, 0, 0),
     v(0, 0, 0),
     f(0, 0, 0),
-    mass(0)
+    mass(0),
+    index(0)
 {
 }
 
@@ -14,7 +15,8 @@ Vertex::Vertex(const Vertex& other) :
     u(other.u),
     v(other.v),
     f(other.f),
-    mass(other.mass)
+    mass(other.mass),
+    index(other.index)
 {
 }
 
@@ -26,6 +28,7 @@ Vertex& Vertex::operator =(const Vertex& rhs)
         v = rhs.v;
         f = rhs.f;
         mass = rhs.mass;
+        index = rhs.index;
     }
     return *this;
 }

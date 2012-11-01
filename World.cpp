@@ -1,6 +1,6 @@
 #include "World.h"
 #include "MeshLoader.h"
-#include "Obstacle.h"
+#include "PlaneObstacle.h"
 #include "Options.h"
 
 using Eigen::Matrix3d;
@@ -95,16 +95,13 @@ World::init(const std::string& filename)
     sDeformations.resize(sMesh.tets.size());
     sStrains.resize(sMesh.tets.size());
     sStresses.resize(sMesh.tets.size());
+
+    sObstacles.push_back(new PlaneObstacle(Eigen::Vector3d(0, 1, 0), -1, Options::friction()));
 }
 
 void
 World::step(double dt)
 {
-    std::vector<Tetrahedron>::const_iterator tet_it;
-    std::vector<Matrix3d>::iterator def_it;
-    std::vector<Matrix3d>::iterator strain_it;
-    std::vector<Matrix3d>::iterator stress_it;
-
     // Clear forces
     for (Vertex& v : sMesh.verts) {
         v.f = Eigen::Vector3d(0, 0, 0);
@@ -116,16 +113,17 @@ World::step(double dt)
     computeForces(sStresses, sMesh);
 
     // Integrate
-    for (Vertex& v : sMesh.verts) {
-        Eigen::Vector3d a = v.f / v.mass;
+    for (auto& v : sMesh.verts) {
+        static Eigen::Vector3d g(0, Options::gravity(), 0);
+        auto a = v.f / v.mass + g;
         v.v += dt * a;
         v.x += dt * v.v;
     }
 
     // Collide
     for (auto o : sObstacles) {
-        for (auto v : sMesh.verts) {
-            o->bounce(v);
+        for (auto& vert : sMesh.verts) {
+            o->bounce(vert);
         }
     }
 }
