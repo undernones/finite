@@ -7,7 +7,7 @@
 class Tetrahedron
 {
 public:
-    Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d);
+    Tetrahedron(uint32_t index, uint32_t a, uint32_t b, uint32_t c, uint32_t d);
     Tetrahedron(const Tetrahedron& other);
     ~Tetrahedron();
 
@@ -15,6 +15,7 @@ public:
 
     void init(VertexList& verts, double density);
 
+    uint32_t index() const { return mIndex; }
     double volume() const { return mVolume; }
     const Eigen::Matrix3d& updateX(const VertexList& verts);
     const Eigen::Matrix3d& X() const { return mX; }
@@ -27,6 +28,7 @@ public:
     static const std::vector<uint32_t>& vert2normals(uint32_t index);
 
 private:
+    uint32_t mIndex;
     uint32_t mVix[4]; // vertex indices
     Eigen::Matrix3d mBasis;
     Eigen::Matrix3d mBeta;

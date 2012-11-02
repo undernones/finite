@@ -27,7 +27,8 @@ getCol(const Eigen::Matrix3d& m, uint32_t col)
 } // end unnamed namespace
 
 
-Tetrahedron::Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d) :
+Tetrahedron::Tetrahedron(uint32_t index, uint32_t a, uint32_t b, uint32_t c, uint32_t d) :
+    mIndex(index),
     mBasis(),
     mBeta(),
     mX(),
@@ -40,6 +41,7 @@ Tetrahedron::Tetrahedron(uint32_t a, uint32_t b, uint32_t c, uint32_t d) :
 }
 
 Tetrahedron::Tetrahedron(const Tetrahedron& other) :
+    mIndex(other.mIndex),
     mBasis(other.mBasis),
     mBeta(other.mBeta),
     mX(other.mX),
@@ -58,6 +60,7 @@ Tetrahedron&
 Tetrahedron::operator =(const Tetrahedron& rhs)
 {
     if (this != &rhs) {
+        mIndex = rhs.mIndex;
         mBasis = rhs.mBasis;
         mBeta = rhs.mBeta;
         mX = rhs.mX;

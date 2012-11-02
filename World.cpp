@@ -116,7 +116,7 @@ World::step(double dt)
     for (auto& v : sMesh.verts) {
         static Eigen::Vector3d g(0, Options::gravity(), 0);
         auto a = v.f / v.mass + g;
-        v.v += dt * a;
+        v.v += dt * a * 0.999;
         v.x += dt * v.v;
     }
 

@@ -31,6 +31,16 @@ GLvoid idle();
 GLvoid mouseButton(int button, int state, int x, int y);
 GLvoid mouseDrag(int x, int y);
 
+Eigen::Vector3d rainbow[] = {
+    Eigen::Vector3d(1.00, 0.00, 0.00), // Red
+    Eigen::Vector3d(1.00, 0.50, 0.00), // Orange
+    Eigen::Vector3d(1.00, 1.00, 0.00), // Yellow
+    Eigen::Vector3d(0.00, 1.00, 0.00), // Green
+    Eigen::Vector3d(0.00, 0.00, 1.00), // Blue
+    Eigen::Vector3d(0.29, 0.00, 0.51), // Indigo
+    Eigen::Vector3d(0.55, 0.00, 1.00), // Violet
+};
+
 GLvoid
 initGl()
 {
@@ -88,9 +98,10 @@ redraw()
     glLightfv(GL_LIGHT0, GL_AMBIENT, gLightAmbient);
 
     // Draw points
-    glColor3d(0.8, 0, 0);
     glBegin(GL_POINTS);
     for (const Vertex& v : World::mesh().verts) {
+        const Eigen::Vector3d& color = rainbow[v.index % 7];
+        glColor3d(color[0], color[1], color[2]);
         glVertex3d(v.x[0], v.x[1], v.x[2]);
     }
     glEnd();
@@ -241,7 +252,7 @@ main(int argc, char* argv[])
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseDrag);
 
-    gEye = Vector3d(0, 4, 10);
+    gEye = Vector3d(0, 0, 8);
     gLookAt = Vector3d(0, 0, 0);
 
     // Launch the simulation thread.
