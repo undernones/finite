@@ -116,20 +116,24 @@ Tetrahedron::vert2normals(uint32_t index)
     if (firstTime) {
         firstTime = false;
 
-        v[0].push_back(0);
+        v[0].reserve(3);
         v[0].push_back(1);
         v[0].push_back(2);
+        v[0].push_back(3);
 
+        v[1].reserve(3);
         v[1].push_back(0);
-        v[1].push_back(3);
         v[1].push_back(2);
+        v[1].push_back(3);
 
+        v[2].reserve(3);
         v[2].push_back(0);
         v[2].push_back(1);
         v[2].push_back(3);
 
+        v[3].reserve(3);
+        v[3].push_back(0);
         v[3].push_back(1);
-        v[3].push_back(3);
         v[3].push_back(2);
     }
     return v[index];
@@ -149,10 +153,10 @@ Tetrahedron::computeNormals()
         getCol(mBasis, 1),
         getCol(mBasis, 2),
     };
-    mNormals[0] = ONE_6TH * cols[1].cross(cols[0]);
     mNormals[1] = ONE_6TH * cols[2].cross(cols[1]);
     mNormals[2] = ONE_6TH * cols[0].cross(cols[2]);
-    mNormals[3] = -(mNormals[0] + mNormals[1] + mNormals[2]);
+    mNormals[3] = ONE_6TH * cols[1].cross(cols[0]);
+    mNormals[0] = -mNormals[1] - mNormals[2] - mNormals[3];
 }
 
 void
