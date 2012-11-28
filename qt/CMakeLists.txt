@@ -56,12 +56,12 @@ endif (CMAKE_BUILD_TYPE MATCHES "Release")
 set(SOURCES
     main.cpp
     MainWindow.cpp
-    #    GlWidget.cpp
+    GlWidget.cpp
 )
 
 set(HEADERS
     MainWindow.h
-    #    GlWidget.h
+    GlWidget.h
 )
 set(FORMS MainWindow.ui)
 #set(RESOURCES images.qrc)

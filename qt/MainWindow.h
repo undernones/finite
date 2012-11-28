@@ -3,6 +3,7 @@
 
 #include <QtGui/QMainWindow>
 
+class Ui_MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -10,6 +11,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget* parent = NULL);
     ~MainWindow();
+
+private:
+    Ui_MainWindow* ui;
 };
 
 #endif // QT_MAINWINDOW_H
