@@ -99,20 +99,20 @@ redraw()
 
     // Draw points
     glBegin(GL_POINTS);
-    for (const Vertex& v : World::mesh().verts) {
+    for (auto& v : World::mesh().verts) {
         const Eigen::Vector3d& color = rainbow[v.index % 7];
         glColor3d(color[0], color[1], color[2]);
         glVertex3d(v.x[0], v.x[1], v.x[2]);
     }
     glEnd();
 
-    //glColor3d(0.8, 0.8, 0.8);
-    //glBegin(GL_LINES);
-    //for (const Vertex& v : World::mesh().verts) {
-    //    Vector3d end = v.x + v.f;
-    //    glVertex3d(v.x[0], v.x[1], v.x[2]);
-    //    glVertex3d(end[0], end[1], end[2]);
-    //}
+    glColor3d(0.8, 0.8, 0.8);
+    glBegin(GL_LINES);
+    for (const Vertex& v : World::mesh().verts) {
+        Vector3d end = v.x + v.f;
+        glVertex3d(v.x[0], v.x[1], v.x[2]);
+        glVertex3d(end[0], end[1], end[2]);
+    }
     //glColor3d(0, 0.8, 0);
     //for (const Tetrahedron& t : World::mesh().tets) {
     //    const Vector3d* norms = t.normals();
@@ -121,7 +121,7 @@ redraw()
     //        glVertex3d(norms[i][0], norms[i][1], norms[i][2]);
     //    }
     //}
-    //glEnd();
+    glEnd();
 
 
     glPopMatrix();

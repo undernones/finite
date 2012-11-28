@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 
+# Questions? Look here:
+# http://developer.qt.nokia.com/quarterly/view/using_cmake_to_build_qt_projects
+
 #
 # If the user specifies -DCMAKE_BUILD_TYPE on the command line, take their
 # definition and dump it in the cache along with proper documentation.
@@ -12,22 +15,35 @@ ELSE(DEFINED CMAKE_BUILD_TYPE)
 ENDIF(DEFINED CMAKE_BUILD_TYPE)
 
 
-project(finite)
+project(qt)
+
+find_package(QT4 REQUIRED)
+if (QT_FOUND)
+    include(${QT_USE_FILE})
+else (QT_FOUND)
+    message("FATAL ERROR: Qt4 not found.")
+endif (QT_FOUND)
 
 include_directories(
     ./
-    /opt/local/include/eigen3/Eigen
-    /opt/local/include
+    ../
     /usr/local/include
+    /opt/local/include
+    /System/Library/Frameworks
+    ${CMAKE_CURRENT_BINARY_DIR}
 )
 link_directories(
-    /opt/local/lib
     /usr/local/lib
+    /opt/local/lib
 )
 
-if(NOT CMAKE_BUILD_TYPE)
-    SET(CMAKE_BUILD_TYPE Release)
-endif(NOT CMAKE_BUILD_TYPE)
+find_library(GL_LIBRARY OpenGL)
+find_library(GLUT_LIBRARY GLUT)
+set(EXTRA_LIBS ${GL_LIBRARY} ${GLUT_LIBRARY})
+
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif (NOT CMAKE_BUILD_TYPE)
 
 set(CMAKE_CXX_FLAGS "-Qunused-arguments -std=c++11 -stdlib=libc++ -Wall -Wno-long-long -pedantic")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2 -Werror")
@@ -37,37 +53,35 @@ if (CMAKE_BUILD_TYPE MATCHES "Release")
     add_definitions(-DNDEBUG)
 endif (CMAKE_BUILD_TYPE MATCHES "Release")
 
-set(CORE_SRC
-    Utils.cpp
-    Mesh.cpp
-    MeshLoader.cpp
-    Obstacle.cpp
-    Options.cpp
-    PlaneObstacle.cpp
-    Tetrahedron.cpp
-    Timing.cpp
-    Vertex.cpp
-    World.cpp
+set(SOURCES
+    main.cpp
+    MainWindow.cpp
+    #    GlWidget.cpp
 )
-set(LIBS gflags)
 
-IF(APPLE)
-    include_directories(/System/Library/Frameworks)
-    find_library(GL_LIBRARY OpenGL)
-    find_library(GLUT_LIBRARY GLUT)
-    set(EXTRA_LIBS ${GL_LIBRARY} ${GLUT_LIBRARY})
+set(HEADERS
+    MainWindow.h
+    #    GlWidget.h
+)
+set(FORMS MainWindow.ui)
+#set(RESOURCES images.qrc)
 
-add_subdirectory(qt)
+#set(LIBS boost_program_options-mt BulletDynamics BulletCollision LinearMath)
 
-ENDIF(APPLE)
+set(QT_USE_QTOPENGL TRUE)
+QT4_WRAP_CPP(HEADERS_MOC ${HEADERS})
+QT4_WRAP_UI(FORMS_HEADERS ${FORMS})
+QT4_ADD_RESOURCES(RESOURCES_RCC ${RESOURCES})
 
-#add_library(spline ${SPLINE_SRC})
-#target_link_libraries(spline ${LIBS} ${EXTRA_LIBS})
-add_executable(headless main.cpp ${CORE_SRC})
-target_link_libraries(headless ${LIBS})
-add_executable(gui gui.cpp ${CORE_SRC})
-target_link_libraries(gui ${LIBS} ${EXTRA_LIBS})
+include(${QT_USE_FILE})
+add_definitions(${QT_DEFINITIONS} -DPCUBE -DQTVIEWER)
 
+add_executable(qt ${SOURCES} 
+    ${HEADERS_MOC}
+    ${FORMS_HEADERS}
+    ${RESOURCES_RCC}
+)
+target_link_libraries(qt ${LIBS} ${EXTRA_LIBS} ${QT_LIBRARIES})
 
 MESSAGE(STATUS)
 MESSAGE(STATUS "--------------------------------------------------------------------------------")

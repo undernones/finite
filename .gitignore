@@ -18,3 +18,6 @@ cmake_install.cmake
 tags
 gui
 headless
+
+moc_*
+ui_*
