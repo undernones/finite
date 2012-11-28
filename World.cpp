@@ -65,21 +65,13 @@ void
 computeForces(const std::vector<Matrix3d>& stresses, Mesh& mesh)
 {
     auto stress_it = stresses.begin();
-    for (const Tetrahedron& tet : mesh.tets) {
-        const uint32_t *verts = tet.vertices();
+    for (auto& tet : mesh.tets) {
+        auto* verts = tet.vertices();
         for (int i = 0; i < 4; i++) {
-            Vertex& vert = mesh.verts[verts[i]];
+            auto& vert = mesh.verts[verts[i]];
             vert.f += *stress_it * tet.normals()[i];
         }
     }
-
-    //for (auto& v : mesh.verts) {
-    //    double mag = v.f.norm();
-    //    if (mag > 2e-6) {
-    //        std::cout << "vert " << v.index << ": " << mag << std::endl;
-    //        exit(1);
-    //    }
-    //}
 }
 // --------------------------------------------------------------------------
 
