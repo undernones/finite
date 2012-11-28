@@ -21,3 +21,5 @@ headless
 
 moc_*
 ui_*
+
+qt/qtgui

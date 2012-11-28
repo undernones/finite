@@ -15,7 +15,7 @@ ELSE(DEFINED CMAKE_BUILD_TYPE)
 ENDIF(DEFINED CMAKE_BUILD_TYPE)
 
 
-project(qt)
+project(qtgui)
 
 find_package(QT4 REQUIRED)
 if (QT_FOUND)
@@ -76,12 +76,12 @@ QT4_ADD_RESOURCES(RESOURCES_RCC ${RESOURCES})
 include(${QT_USE_FILE})
 add_definitions(${QT_DEFINITIONS} -DPCUBE -DQTVIEWER)
 
-add_executable(qt ${SOURCES} 
+add_executable(qtgui ${SOURCES} 
     ${HEADERS_MOC}
     ${FORMS_HEADERS}
     ${RESOURCES_RCC}
 )
-target_link_libraries(qt ${LIBS} ${EXTRA_LIBS} ${QT_LIBRARIES})
+target_link_libraries(qtgui ${LIBS} ${EXTRA_LIBS} ${QT_LIBRARIES})
 
 MESSAGE(STATUS)
 MESSAGE(STATUS "--------------------------------------------------------------------------------")
