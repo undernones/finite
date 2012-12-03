@@ -25,14 +25,15 @@ else (QT_FOUND)
 endif (QT_FOUND)
 
 include_directories(
-    ./
-    ../
+    .
+    ../lib
     /usr/local/include
     /opt/local/include
     /System/Library/Frameworks
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 link_directories(
+    ..
     /usr/local/lib
     /opt/local/lib
 )
@@ -55,18 +56,25 @@ endif (CMAKE_BUILD_TYPE MATCHES "Release")
 
 set(SOURCES
     main.cpp
-    MainWindow.cpp
     GlWidget.cpp
+    MainWindow.cpp
+    SimThread.cpp
+    ../Obstacle.cpp
+    ../Options.cpp
+    ../PlaneObstacle.cpp
+    ../World.cpp
 )
+# TODO: ^ Dependencies!
 
 set(HEADERS
     MainWindow.h
     GlWidget.h
+    SimThread.h
 )
 set(FORMS MainWindow.ui)
 #set(RESOURCES images.qrc)
 
-#set(LIBS boost_program_options-mt BulletDynamics BulletCollision LinearMath)
+set(LIBS geom)
 
 set(QT_USE_QTOPENGL TRUE)
 QT4_WRAP_CPP(HEADERS_MOC ${HEADERS})
