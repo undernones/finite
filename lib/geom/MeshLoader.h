@@ -1,5 +1,5 @@
-#ifndef MESH_LOADER_H
-#define MESH_LOADER_H
+#ifndef GEOM_MESHLOADER_H
+#define GEOM_MESHLOADER_H
 
 #include <string>
 
@@ -13,4 +13,4 @@ private:
     MeshLoader() {}
 };
 
-#endif // MESH_LOADER_H
+#endif // GEOM_MESHLOADER_H

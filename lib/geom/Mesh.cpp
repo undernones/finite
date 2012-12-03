@@ -1,7 +1,7 @@
 #include "Mesh.h"
 
 void
-Mesh::init(const std::vector<Vertex>& verts, const std::vector<Tetrahedron>& tets, double density)
+Mesh::init(const VertexList& verts, const TetList& tets, double density)
 {
     this->verts = verts;
     this->tets = tets;

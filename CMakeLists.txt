@@ -15,7 +15,8 @@ ENDIF(DEFINED CMAKE_BUILD_TYPE)
 project(finite)
 
 include_directories(
-    ./
+    .
+    lib
     /opt/local/include/eigen3/Eigen
     /opt/local/include
     /usr/local/include
@@ -37,36 +38,37 @@ if (CMAKE_BUILD_TYPE MATCHES "Release")
     add_definitions(-DNDEBUG)
 endif (CMAKE_BUILD_TYPE MATCHES "Release")
 
-set(CORE_SRC
+set (GEOM_SRC
+    lib/geom/Mesh.cpp
+    lib/geom/MeshLoader.cpp
+    lib/geom/Tetrahedron.cpp
+    lib/geom/Vertex.cpp
+)
+add_library(geom ${GEOM_SRC})
+target_link_libraries(geom ${LIBS})
+
+set (CORE_SRC
     Utils.cpp
-    Mesh.cpp
-    MeshLoader.cpp
     Obstacle.cpp
     Options.cpp
     PlaneObstacle.cpp
-    Tetrahedron.cpp
     Timing.cpp
-    Vertex.cpp
     World.cpp
 )
-set(LIBS gflags)
 
-IF(APPLE)
+if (APPLE)
     include_directories(/System/Library/Frameworks)
     find_library(GL_LIBRARY OpenGL)
     find_library(GLUT_LIBRARY GLUT)
     set(EXTRA_LIBS ${GL_LIBRARY} ${GLUT_LIBRARY})
 
-add_subdirectory(qt)
+    add_subdirectory(qt)
+endif (APPLE)
 
-ENDIF(APPLE)
-
-#add_library(spline ${SPLINE_SRC})
-#target_link_libraries(spline ${LIBS} ${EXTRA_LIBS})
 add_executable(headless main.cpp ${CORE_SRC})
-target_link_libraries(headless ${LIBS})
+target_link_libraries(headless geom ${LIBS})
 add_executable(gui gui.cpp ${CORE_SRC})
-target_link_libraries(gui ${LIBS} ${EXTRA_LIBS})
+target_link_libraries(gui geom ${LIBS} ${EXTRA_LIBS})
 
 
 MESSAGE(STATUS)

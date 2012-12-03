@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <Eigen>
-#include "Mesh.h"
+#include <geom/Mesh.h>
 
 class Obstacle;
 class World

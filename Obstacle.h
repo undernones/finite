@@ -1,7 +1,7 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
 
-#include "Vertex.h"
+#include <geom/Vertex.h>
 
 class Obstacle
 {

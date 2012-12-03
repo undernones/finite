@@ -1,5 +1,5 @@
-#ifndef GEOMETRY_TETRAHEDRON_H
-#define GEOMETRY_TETRAHEDRON_H
+#ifndef GEOM_TETRAHEDRON_H
+#define GEOM_TETRAHEDRON_H
 
 #include <Eigen>
 #include "Vertex.h"
@@ -41,4 +41,6 @@ private:
     void computeMasses(VertexList& verts, double density);
 };
 
-#endif // GEOMETRY_TETRAHEDRON_H
+typedef std::vector<Tetrahedron> TetList;
+
+#endif // GEOM_TETRAHEDRON_H

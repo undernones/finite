@@ -1,6 +1,6 @@
 #include "World.h"
 #include <iostream>
-#include "MeshLoader.h"
+#include <geom/MeshLoader.h>
 #include "PlaneObstacle.h"
 #include "Options.h"
 //#include <unistd.h>
@@ -11,9 +11,7 @@ namespace
 {
 
 void
-computeDeformations(const VertexList& verts,
-                    std::vector<Tetrahedron>& tets,
-                    std::vector<Matrix3d>& deformations)
+computeDeformations(const VertexList& verts, TetList& tets, std::vector<Matrix3d>& deformations)
 {
     auto tet_it = tets.begin();
     auto def_it = deformations.begin();

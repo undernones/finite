@@ -16,10 +16,7 @@ public:
     uint32_t index;
 
     Vertex();
-    Vertex(const Vertex& other);
     ~Vertex() {}
-
-    Vertex& operator =(const Vertex& rhs);
 };
 
 typedef std::vector<Vertex> VertexList;
