@@ -1,17 +1,33 @@
 #include "GlWidget.h"
 #include <GLUT/glut.h>
 #include <QtGui/QMouseEvent>
+#include <geom/Mesh.h>
+
+using Eigen::Vector3d;
 
 namespace
 {
+
 const double SPHERE_SIZE = 0.015;
 const double WIRE_OFFSET = 0.0005;
 const unsigned MAX_UINT = std::numeric_limits<unsigned>::max();
+
+Vector3d rainbow[] = {
+    Vector3d(1.00, 0.00, 0.00), // Red
+    Vector3d(1.00, 0.50, 0.00), // Orange
+    Vector3d(1.00, 1.00, 0.00), // Yellow
+    Vector3d(0.00, 1.00, 0.00), // Green
+    Vector3d(0.00, 0.00, 1.00), // Blue
+    Vector3d(0.29, 0.00, 0.51), // Indigo
+    Vector3d(0.55, 0.00, 1.00), // Violet
+};
+
 }
 
 GlWidget::GlWidget(QWidget* parent) :
     QGLWidget(parent),
-    mRotX(0.f), mRotY(0.f)
+    mRotX(0.f), mRotY(0.f),
+    mMesh(NULL)
 {
     mLightPos[0] = 0.0f;
     mLightPos[1] = 2.0f;
@@ -26,8 +42,8 @@ GlWidget::GlWidget(QWidget* parent) :
     mLightAmb[1] = 0.09f;
     mLightAmb[2] = 0.09f;
 
-    mEye = Eigen::Vector3d(0, 0, 1.1);
-    mLookAt = Eigen::Vector3d(0, 0, 0);
+    mEye = Vector3d(0, 0, 1.1);
+    mLookAt = Vector3d(0, 0, 0);
 }
 
 GlWidget::~GlWidget()
@@ -114,15 +130,7 @@ GlWidget::paintGL()
     glRotatef(mRotX, 1.0f, 0, 0);
     glRotated(mRotY, 0, 1.0f, 0);
 
-    // Draw stuff!
-
-    glColor3d(0, 0, 0.9);
-    glBegin(GL_QUADS);
-    glVertex3d(0, 0, 0);
-    glVertex3d(10, 0, 0);
-    glVertex3d(10, 10, 0);
-    glVertex3d(0, 10, 0);
-    glEnd();
+    renderGeometry();
 
     glFlush();
 }
@@ -150,13 +158,13 @@ GlWidget::mouseMoveEvent(QMouseEvent *event)
     QPoint dp = event->pos() - mLastMouse;
 
     double scale, len, theta;
-    Eigen::Vector3d neye, neye2;
-    Eigen::Vector3d f, r, u;
+    Vector3d neye, neye2;
+    Vector3d f, r, u;
 
     if ((event->buttons() & Qt::LeftButton) && (event->modifiers() & Qt::ControlModifier)) {
         // translate
         f = mLookAt - mEye;
-        u = Eigen::Vector3d(0, 1, 0);
+        u = Vector3d(0, 1, 0);
 
         // scale the change by how far away we are
         scale = sqrt(f.norm()) * 0.007;
@@ -177,7 +185,7 @@ GlWidget::mouseMoveEvent(QMouseEvent *event)
 
         // first rotate in the x/z plane
         theta = -dp.x() * 0.007;
-        neye2 = Eigen::Vector3d(
+        neye2 = Vector3d(
             cos(theta) * neye[0] + sin(theta) * neye[2],
             neye[1],
             -sin(theta) * neye[0] + cos(theta) * neye[2]
@@ -188,7 +196,7 @@ GlWidget::mouseMoveEvent(QMouseEvent *event)
         theta = -dp.y() * 0.007;
 
         f = -neye2;
-        u = Eigen::Vector3d(0, 1, 0);
+        u = Vector3d(0, 1, 0);
         r = f.cross(u).normalized();
         u = r.cross(f).normalized();
         len = f.norm();
@@ -230,7 +238,7 @@ GlWidget::initSphereList()
 void
 GlWidget::zoom(int delta)
 {
-    Eigen::Vector3d f = mLookAt - mEye;
+    Vector3d f = mLookAt - mEye;
     double len = f.norm();
     f.normalize();
 
@@ -246,3 +254,34 @@ GlWidget::zoom(int delta)
     }
 }
  
+void
+GlWidget::renderGeometry() const
+{
+    if (mMesh == NULL) return;
+
+    // Draw points
+    glBegin(GL_POINTS);
+    for (auto& v : mMesh->verts) {
+        const Eigen::Vector3d& color = rainbow[v.index % 7];
+        glColor3d(color[0], color[1], color[2]);
+        glVertex3d(v.x[0], v.x[1], v.x[2]);
+    }
+    glEnd();
+
+    glColor3d(0.8, 0.8, 0.8);
+    glBegin(GL_LINES);
+    for (const Vertex& v : mMesh->verts) {
+        Vector3d end = v.x + v.f;
+        glVertex3d(v.x[0], v.x[1], v.x[2]);
+        glVertex3d(end[0], end[1], end[2]);
+    }
+    //glColor3d(0, 0.8, 0);
+    //for (const Tetrahedron& t : mMesh->tets) {
+    //    const Vector3d* norms = t.normals();
+    //    for (int i = 0; i < 4; ++i) {
+    //        glVertex3d(0, 0, 0);
+    //        glVertex3d(norms[i][0], norms[i][1], norms[i][2]);
+    //    }
+    //}
+    glEnd();
+}

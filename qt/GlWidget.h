@@ -4,6 +4,7 @@
 #include <QtOpenGL/QGLWidget>
 #include <Eigen>
 
+class Mesh;
 class GlWidget : public QGLWidget
 {
     Q_OBJECT
@@ -22,6 +23,8 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void wheelEvent(QWheelEvent*);
 
+    void setMesh(const Mesh* mesh) { mMesh = mesh; }
+
 private:
     GLfloat mLightPos[4];
     GLfloat mLightAmb[3];
@@ -37,8 +40,12 @@ private:
     GLuint mSphereSolid;
     GLuint mSphereWire;
 
+    const Mesh* mMesh;
+
     void initSphereList();
     void zoom(int delta);
+
+    void renderGeometry() const;
 };
 
 #endif // QT_GLWIDGET_H

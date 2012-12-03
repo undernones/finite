@@ -57,8 +57,8 @@
   </widget>
   <action name="actionGo">
    <property name="icon">
-    <iconset>
-     <normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/play-normal.png</normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/play-normal.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/resources/play-normal.png</normaloff>:/images/resources/play-normal.png</iconset>
    </property>
    <property name="text">
     <string>Go</string>
@@ -72,8 +72,8 @@
   </action>
   <action name="actionHalt">
    <property name="icon">
-    <iconset>
-     <normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/pause-normal.png</normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/pause-normal.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/resources/pause-normal.png</normaloff>:/images/resources/pause-normal.png</iconset>
    </property>
    <property name="text">
     <string>Halt</string>
@@ -87,8 +87,8 @@
   </action>
   <action name="actionNext">
    <property name="icon">
-    <iconset>
-     <normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/step-forward-normal.png</normaloff>../../../sealab/Code/Projects/monalisa/viewer/resources/step-forward-normal.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/resources/step-forward-normal.png</normaloff>:/images/resources/step-forward-normal.png</iconset>
    </property>
    <property name="text">
     <string>Next</string>
@@ -109,6 +109,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="images">
+    <file>resources/first-normal.png</file>
+    <file>resources/last-normal.png</file>
+    <file>resources/Pause-Disabled-icon.png</file>
+    <file>resources/pause-normal.png</file>
+    <file>resources/play-normal.png</file>
+    <file>resources/step-backward-normal.png</file>
+    <file>resources/step-forward-normal.png</file>
+  </qresource>
+</RCC>
