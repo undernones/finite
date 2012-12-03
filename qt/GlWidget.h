@@ -13,6 +13,8 @@ public:
     explicit GlWidget(QWidget* parent = NULL);
     ~GlWidget();
 
+    void setMesh(const Mesh* mesh) { mMesh = mesh; }
+
 protected:
     virtual void initializeGL();
     virtual void resizeGL(int w, int h);
@@ -22,8 +24,6 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent*);
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void wheelEvent(QWheelEvent*);
-
-    void setMesh(const Mesh* mesh) { mMesh = mesh; }
 
 private:
     GLfloat mLightPos[4];

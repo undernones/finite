@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="GlWidget" name="widget" native="true"/>
+     <widget class="GlWidget" name="glWidget" native="true"/>
     </item>
    </layout>
   </widget>

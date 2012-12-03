@@ -12,3 +12,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void
+MainWindow::setMesh(const Mesh* mesh)
+{
+    ui->glWidget->setMesh(mesh);
+}
+
+void
+MainWindow::stepped()
+{
+    ui->glWidget->repaint();
+}

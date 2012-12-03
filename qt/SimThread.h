@@ -8,7 +8,7 @@ class SimThread : public QThread
     Q_OBJECT
 
 public:
-    static SimThread &instance();
+    static SimThread& instance();
     ~SimThread();
 
     static void setTimeParams(double duration, double dt);
