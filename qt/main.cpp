@@ -14,6 +14,7 @@ int main(int argc, char* argv[])
     w.raise();
     w.show();
 
+    // TODO: Connect the GlWidget to the SimThread stepped signal.
     // TODO: SimThread interface consistency!
     SimThread::setTimeParams(Options::duration(), Options::dt());
     SimThread::instance().start(QThread::NormalPriority);
