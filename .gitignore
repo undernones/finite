@@ -19,7 +19,10 @@ tags
 gui
 headless
 
+# Qt stuff
 moc_*
 ui_*
+*.cxx
+*.qrc.depends
 
 qt/qtgui

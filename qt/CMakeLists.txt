@@ -72,7 +72,7 @@ set(HEADERS
     SimThread.h
 )
 set(FORMS MainWindow.ui)
-#set(RESOURCES images.qrc)
+set(RESOURCES images.qrc)
 
 set(LIBS geom)
 
