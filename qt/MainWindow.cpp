@@ -32,7 +32,9 @@ MainWindow::togglePlayPause()
 {
     if (SimThread::isPaused()) {
         SimThread::instance().resume();
+        ui->actionNext->setEnabled(false);
     } else {
         SimThread::instance().pause();
+        ui->actionNext->setEnabled(true);
     }
 }

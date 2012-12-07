@@ -55,6 +55,9 @@
    <addaction name="actionNext"/>
   </widget>
   <action name="actionNext">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/resources/step-forward-normal.png</normaloff>:/images/resources/step-forward-normal.png</iconset>
