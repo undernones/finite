@@ -51,11 +51,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionGo"/>
-   <addaction name="actionHalt"/>
+   <addaction name="actionPlay"/>
+   <addaction name="actionPause"/>
    <addaction name="actionNext"/>
   </widget>
-  <action name="actionGo">
+  <action name="actionPlay">
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/resources/play-normal.png</normaloff>:/images/resources/play-normal.png</iconset>
@@ -70,7 +70,7 @@
     <string>G</string>
    </property>
   </action>
-  <action name="actionHalt">
+  <action name="actionPause">
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/resources/pause-normal.png</normaloff>:/images/resources/pause-normal.png</iconset>

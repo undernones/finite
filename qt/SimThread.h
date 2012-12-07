@@ -2,6 +2,8 @@
 #define VIEWER_SIMTHREAD_H
 
 #include <QtCore/QThread>
+#include <QtCore/QMutex>
+#include <QtCore/QWaitCondition>
 
 class SimThread : public QThread
 {
@@ -17,6 +19,9 @@ protected:
     void run();
 
 private:
+    QMutex mMutex;
+    QWaitCondition mWaitCondition;
+    bool mPaused;
     bool mQuitFlag;
     double mDuration;
     double mDt;
@@ -29,6 +34,8 @@ signals:
 
 public slots:
     void quit();
+    void pause();
+    void resume();
 };
 
 #endif // VIEWER_SIMTHREAD_H
