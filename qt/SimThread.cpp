@@ -2,7 +2,7 @@
 #include "../World.h" // TODO: Dependencies!
 
 SimThread::SimThread(QObject* parent) : QThread(parent),
-    mPaused(false),
+    mIsPaused(false),
     mQuitFlag(false),
     mDuration(0),
     mDt(0)
@@ -26,7 +26,7 @@ SimThread::run()
     static uint32_t totalSteps = mDuration / mDt;
     for (uint32_t i = 0; i < totalSteps && !mQuitFlag; ++i) {
         mMutex.lock();
-        if (mPaused) {
+        if (mIsPaused) {
             mWaitCondition.wait(&mMutex);
         }
         mMutex.unlock();
@@ -54,7 +54,7 @@ void
 SimThread::pause()
 {
     mMutex.lock();
-    mPaused = true;
+    mIsPaused = true;
     mMutex.unlock();
 }
 
@@ -62,7 +62,7 @@ void
 SimThread::resume()
 {
     mMutex.lock();
-    mPaused = false;
+    mIsPaused = false;
     mMutex.unlock();
     mWaitCondition.wakeAll();
 }

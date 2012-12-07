@@ -7,8 +7,7 @@ MainWindow::MainWindow(QWidget* parent) :
     ui(new Ui_MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->actionPlay, SIGNAL(triggered()), &SimThread::instance(), SLOT(resume()));
-    connect(ui->actionPause, SIGNAL(triggered()), &SimThread::instance(), SLOT(pause()));
+    connect(ui->actionPlayPause, SIGNAL(triggered()), SLOT(togglePlayPause()));
 }
 
 MainWindow::~MainWindow()
@@ -28,3 +27,12 @@ MainWindow::stepped()
     ui->glWidget->repaint();
 }
 
+void
+MainWindow::togglePlayPause()
+{
+    if (SimThread::isPaused()) {
+        SimThread::instance().resume();
+    } else {
+        SimThread::instance().pause();
+    }
+}

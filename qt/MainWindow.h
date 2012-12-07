@@ -20,6 +20,7 @@ private:
 
 public slots:
     void stepped();
+    void togglePlayPause();
 };
 
 #endif // QT_MAINWINDOW_H

@@ -51,40 +51,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionPlay"/>
-   <addaction name="actionPause"/>
+   <addaction name="actionPlayPause"/>
    <addaction name="actionNext"/>
   </widget>
-  <action name="actionPlay">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/resources/play-normal.png</normaloff>:/images/resources/play-normal.png</iconset>
-   </property>
-   <property name="text">
-    <string>Go</string>
-   </property>
-   <property name="toolTip">
-    <string>Run the simulation</string>
-   </property>
-   <property name="shortcut">
-    <string>G</string>
-   </property>
-  </action>
-  <action name="actionPause">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/resources/pause-normal.png</normaloff>:/images/resources/pause-normal.png</iconset>
-   </property>
-   <property name="text">
-    <string>Halt</string>
-   </property>
-   <property name="toolTip">
-    <string>Pause the simulation</string>
-   </property>
-   <property name="shortcut">
-    <string>H</string>
-   </property>
-  </action>
   <action name="actionNext">
    <property name="icon">
     <iconset resource="images.qrc">
@@ -98,6 +67,25 @@
    </property>
    <property name="shortcut">
     <string>N</string>
+   </property>
+  </action>
+  <action name="actionPlayPause">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/resources/pause-normal.png</normaloff>
+     <normalon>:/images/resources/play-normal.png</normalon>:/images/resources/pause-normal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Play/Pause</string>
+   </property>
+   <property name="toolTip">
+    <string>Play/Pause</string>
+   </property>
+   <property name="shortcut">
+    <string>Space</string>
    </property>
   </action>
  </widget>

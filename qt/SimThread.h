@@ -14,6 +14,7 @@ public:
     ~SimThread();
 
     static void setTimeParams(double duration, double dt);
+    static bool isPaused() { return instance().mIsPaused; }
 
 protected:
     void run();
@@ -21,7 +22,7 @@ protected:
 private:
     QMutex mMutex;
     QWaitCondition mWaitCondition;
-    bool mPaused;
+    bool mIsPaused;
     bool mQuitFlag;
     double mDuration;
     double mDt;
