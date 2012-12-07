@@ -19,8 +19,9 @@ private:
     Ui_MainWindow* ui;
 
 public slots:
+    void paused();
+    void resumed();
     void stepped();
-    void togglePlayPause();
 };
 
 #endif // QT_MAINWINDOW_H

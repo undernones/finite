@@ -23,16 +23,13 @@ SimThread::instance()
 void
 SimThread::run()
 {
-    static uint32_t totalSteps = mDuration / mDt;
-    for (uint32_t i = 0; i < totalSteps && !mQuitFlag; ++i) {
+    while (!mQuitFlag) {
         mMutex.lock();
         if (mIsPaused) {
             mWaitCondition.wait(&mMutex);
         }
         mMutex.unlock();
-
-        World::step(mDt);
-        emit stepped();
+        step();
     }
 }
 
@@ -50,12 +47,29 @@ SimThread::setTimeParams(double duration, double dt)
     instance().mDt = dt;
 }
 
+bool
+SimThread::isPaused()
+{
+    return instance().mIsPaused;
+}
+
+void
+SimThread::togglePausedState()
+{
+    if (mIsPaused) {
+        resume();
+    } else {
+        pause();
+    }
+}
+
 void
 SimThread::pause()
 {
     mMutex.lock();
     mIsPaused = true;
     mMutex.unlock();
+    emit paused();
 }
 
 void
@@ -65,5 +79,16 @@ SimThread::resume()
     mIsPaused = false;
     mMutex.unlock();
     mWaitCondition.wakeAll();
+    emit resumed();
 }
 
+void
+SimThread::step()
+{
+    static uint32_t totalSteps = mDuration / mDt;
+    static uint32_t i = 0;
+    if (i < totalSteps) {
+        World::step(mDt);
+        emit stepped();
+    }
+}

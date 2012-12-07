@@ -14,7 +14,7 @@ public:
     ~SimThread();
 
     static void setTimeParams(double duration, double dt);
-    static bool isPaused() { return instance().mIsPaused; }
+    static bool isPaused();
 
 protected:
     void run();
@@ -31,12 +31,16 @@ private:
     SimThread(const SimThread&);
 
 signals:
+    void paused();
+    void resumed();
     void stepped();
 
 public slots:
     void quit();
+    void togglePausedState();
     void pause();
     void resume();
+    void step();
 };
 
 #endif // VIEWER_SIMTHREAD_H

@@ -7,7 +7,15 @@ MainWindow::MainWindow(QWidget* parent) :
     ui(new Ui_MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->actionPlayPause, SIGNAL(triggered()), SLOT(togglePlayPause()));
+
+    connect(ui->actionPlayPause,    SIGNAL(triggered()),
+            &SimThread::instance(), SLOT(togglePausedState()));
+
+    connect(ui->actionNext, SIGNAL(triggered()),
+            &SimThread::instance(), SLOT(step()));
+
+    connect(&SimThread::instance(), SIGNAL(paused()), SLOT(paused()));
+    connect(&SimThread::instance(), SIGNAL(resumed()), SLOT(resumed()));
 }
 
 MainWindow::~MainWindow()
@@ -22,19 +30,19 @@ MainWindow::setMesh(const Mesh* mesh)
 }
 
 void
-MainWindow::stepped()
+MainWindow::paused()
 {
-    ui->glWidget->repaint();
+    ui->actionNext->setEnabled(true);
 }
 
 void
-MainWindow::togglePlayPause()
+MainWindow::resumed()
 {
-    if (SimThread::isPaused()) {
-        SimThread::instance().resume();
-        ui->actionNext->setEnabled(false);
-    } else {
-        SimThread::instance().pause();
-        ui->actionNext->setEnabled(true);
-    }
+    ui->actionNext->setEnabled(false);
+}
+
+void
+MainWindow::stepped()
+{
+    ui->glWidget->repaint();
 }
