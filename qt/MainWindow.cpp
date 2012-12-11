@@ -30,6 +30,11 @@ MainWindow::setMesh(const Mesh* mesh)
 }
 
 void
+MainWindow::setSimData(const SimData* mesh)
+{
+}
+
+void
 MainWindow::paused()
 {
     ui->actionNext->setEnabled(true);

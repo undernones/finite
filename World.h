@@ -6,6 +6,13 @@
 #include <Eigen>
 #include <geom/Mesh.h>
 
+struct SimData
+{
+    const std::vector<Eigen::Matrix3d>& deformations;
+    const std::vector<Eigen::Matrix3d>& strains;
+    const std::vector<Eigen::Matrix3d>& stresses;
+};
+
 class Obstacle;
 class World
 {
@@ -13,6 +20,8 @@ public:
     static void init(const std::string& filename);
     static void step(double dt);
     static const Mesh& mesh() { return sMesh; }
+
+    static SimData simData();
 
 private:
     World();

@@ -3,6 +3,8 @@
 
 #include <QtGui/QMainWindow>
 
+struct SimData;
+
 class Mesh;
 class Ui_MainWindow;
 class MainWindow : public QMainWindow
@@ -14,6 +16,7 @@ public:
     ~MainWindow();
 
     void setMesh(const Mesh* mesh);
+    void setSimData(const SimData* simData);
 
 private:
     Ui_MainWindow* ui;

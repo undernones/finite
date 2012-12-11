@@ -82,6 +82,16 @@ std::vector<Matrix3d> World::sStrains;
 std::vector<Matrix3d> World::sStresses;
 std::vector<Obstacle*> World::sObstacles;
 
+SimData
+World::simData()
+{
+    return SimData {
+        sDeformations,
+        sStrains,
+        sStresses
+    };
+}
+
 void
 World::init(const std::string& filename)
 {

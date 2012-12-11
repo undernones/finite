@@ -20,6 +20,7 @@ gui
 headless
 
 # Qt stuff
+*_automoc.cpp
 moc_*
 ui_*
 *.cxx
