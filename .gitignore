@@ -16,8 +16,8 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 tags
-gui
 headless
+qt/qtgui
 
 # Qt stuff
 *_automoc.cpp
@@ -25,5 +25,3 @@ moc_*
 ui_*
 *.cxx
 *.qrc.depends
-
-qt/qtgui
