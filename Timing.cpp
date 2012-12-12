@@ -1,7 +1,7 @@
 #include "Timing.h"
 
 timeval
-operator -(const timeval &l, const timeval &r)
+operator -(const timeval& l, const timeval& r)
 {
     timeval result;
     result.tv_sec = l.tv_sec - r.tv_sec;
@@ -16,7 +16,7 @@ operator -(const timeval &l, const timeval &r)
 }
 
 timeval
-operator +(const timeval &l, const timeval &r)
+operator +(const timeval& l, const timeval& r)
 {
     timeval result;
     result.tv_sec = l.tv_sec + r.tv_sec;
@@ -30,7 +30,7 @@ operator +(const timeval &l, const timeval &r)
 }
 
 double
-time2sec(const timeval &t)
+time2sec(const timeval& t)
 {
     return t.tv_sec + (t.tv_usec / 1e6);
 }
