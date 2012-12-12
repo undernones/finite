@@ -13,8 +13,8 @@ public:
     static SimThread& instance();
     ~SimThread();
 
-    static void setTimeParams(double duration, double dt);
-    static bool isPaused();
+    void init(double duration, double dt);
+    bool isPaused();
 
 protected:
     void run();

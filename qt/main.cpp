@@ -9,19 +9,19 @@ int main(int argc, char* argv[])
     Options::init(argc, argv);
     World::init(Options::meshFile());
 
+    SimThread& thread(SimThread::instance());
     SimData simData(World::simData());
 
     QApplication a(argc, argv);
     MainWindow w;
     w.setMesh(&World::mesh());
     w.setSimData(&simData);
-    w.connect(&SimThread::instance(), SIGNAL(stepped()), SLOT(stepped()));
+    w.connect(&thread, SIGNAL(stepped()), SLOT(stepped()));
     w.raise();
     w.show();
 
-    // TODO: SimThread interface consistency!
-    SimThread::setTimeParams(Options::duration(), Options::dt());
-    SimThread::instance().start(QThread::NormalPriority);
+    thread.init(Options::duration(), Options::dt());
+    thread.start(QThread::NormalPriority);
 
     return a.exec();
 }

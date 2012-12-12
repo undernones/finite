@@ -38,7 +38,14 @@
          </widget>
         </item>
         <item>
-         <widget class="MatrixViewer" name="matrixViewer" native="true"/>
+         <widget class="MatrixViewer" name="matrixViewer" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>600</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

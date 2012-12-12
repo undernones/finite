@@ -41,7 +41,7 @@ SimThread::quit()
 }
 
 void
-SimThread::setTimeParams(double duration, double dt)
+SimThread::init(double duration, double dt)
 {
     instance().mDuration = duration;
     instance().mDt = dt;

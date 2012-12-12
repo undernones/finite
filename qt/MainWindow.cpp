@@ -9,14 +9,13 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->actionPlayPause,    SIGNAL(triggered()),
-            &SimThread::instance(), SLOT(togglePausedState()));
+    SimThread& thread(SimThread::instance());
 
-    connect(ui->actionNext, SIGNAL(triggered()),
-            &SimThread::instance(), SLOT(step()));
+    connect(ui->actionPlayPause, SIGNAL(triggered()), &thread, SLOT(togglePausedState()));
+    connect(ui->actionNext, SIGNAL(triggered()), &thread, SLOT(step()));
 
-    connect(&SimThread::instance(), SIGNAL(paused()), SLOT(paused()));
-    connect(&SimThread::instance(), SIGNAL(resumed()), SLOT(resumed()));
+    connect(&thread, SIGNAL(paused()), SLOT(paused()));
+    connect(&thread, SIGNAL(resumed()), SLOT(resumed()));
 }
 
 MainWindow::~MainWindow()
@@ -56,5 +55,9 @@ void
 MainWindow::stepped()
 {
     ui->glWidget->update();
-    //ui->matrixViewer->refresh();
+
+    // Only update the matrix viewer if we are stepping interactively.
+    if (SimThread::instance().isPaused()) {
+        ui->matrixViewer->refresh();
+    }
 }
