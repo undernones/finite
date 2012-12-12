@@ -69,6 +69,7 @@ computeForces(const std::vector<Matrix3d>& stresses, Mesh& mesh)
             auto& vert = mesh.verts[verts[i]];
             vert.f += *stress_it * tet.normals()[i];
         }
+        ++stress_it;
     }
 }
 // --------------------------------------------------------------------------
