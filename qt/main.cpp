@@ -9,9 +9,12 @@ int main(int argc, char* argv[])
     Options::init(argc, argv);
     World::init(Options::meshFile());
 
+    SimData simData(World::simData());
+
     QApplication a(argc, argv);
     MainWindow w;
     w.setMesh(&World::mesh());
+    w.setSimData(&simData);
     w.connect(&SimThread::instance(), SIGNAL(stepped()), SLOT(stepped()));
     w.raise();
     w.show();

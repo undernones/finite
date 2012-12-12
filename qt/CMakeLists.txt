@@ -58,6 +58,7 @@ set(SOURCES
     main.cpp
     GlWidget.cpp
     MainWindow.cpp
+    MatrixViewer.cpp
     SimThread.cpp
     ../Obstacle.cpp
     ../Options.cpp
@@ -66,7 +67,7 @@ set(SOURCES
 )
 # TODO: ^ Dependencies!
 
-set(FORMS MainWindow.ui)
+set(FORMS MainWindow.ui MatrixViewer.ui)
 set(RESOURCES images.qrc)
 
 set(LIBS geom)

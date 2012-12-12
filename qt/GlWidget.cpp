@@ -270,11 +270,11 @@ GlWidget::renderGeometry() const
 
     glColor3d(0.8, 0.8, 0.8);
     glBegin(GL_LINES);
-    for (const Vertex& v : mMesh->verts) {
-        Vector3d end = v.x + v.f;
-        glVertex3d(v.x[0], v.x[1], v.x[2]);
-        glVertex3d(end[0], end[1], end[2]);
-    }
+    //for (const Vertex& v : mMesh->verts) {
+    //    Vector3d end = v.x + v.f;
+    //    glVertex3d(v.x[0], v.x[1], v.x[2]);
+    //    glVertex3d(end[0], end[1], end[2]);
+    //}
     //glColor3d(0, 0.8, 0);
     //for (const Tetrahedron& t : mMesh->tets) {
     //    const Vector3d* norms = t.normals();

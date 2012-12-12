@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include "SimThread.h"
+#include "../World.h" // TODO: Dependencies!
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -30,8 +31,13 @@ MainWindow::setMesh(const Mesh* mesh)
 }
 
 void
-MainWindow::setSimData(const SimData* mesh)
+MainWindow::setSimData(const SimData* simData)
 {
+    const Eigen::Matrix3d* mat = NULL;
+    if (simData != NULL) {
+        mat = &simData->deformations[0];
+    }
+    ui->matrixViewer->setMatrix(mat);
 }
 
 void
@@ -49,5 +55,6 @@ MainWindow::resumed()
 void
 MainWindow::stepped()
 {
-    ui->glWidget->repaint();
+    ui->glWidget->update();
+    //ui->matrixViewer->refresh();
 }
