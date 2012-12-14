@@ -48,6 +48,8 @@ add_library(geom ${GEOM_SRC})
 target_link_libraries(geom ${LIBS})
 
 set (PHYSICS_SRC
+    lib/physics/Obstacle.cpp
+    lib/physics/PlaneObstacle.cpp
     lib/physics/SoftBody.cpp
 )
 add_library(physics ${PHYSICS_SRC})
@@ -55,9 +57,7 @@ target_link_libraries(physics geom ${LIBS})
 
 set (CORE_SRC
     Utils.cpp
-    Obstacle.cpp
     Options.cpp
-    PlaneObstacle.cpp
     Timing.cpp
     World.cpp
 )

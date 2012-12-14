@@ -1,5 +1,5 @@
-#ifndef OBSTACLE_H
-#define OBSTACLE_H
+#ifndef PHYSICS_OBSTACLE_H
+#define PHYSICS_OBSTACLE_H
 
 #include <geom/Vertex.h>
 
@@ -19,5 +19,5 @@ protected:
     double mFriction;
 };
 
-#endif // OBSTACLE_H
+#endif // PHYSICS_OBSTACLE_H
 

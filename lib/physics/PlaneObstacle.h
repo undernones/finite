@@ -1,5 +1,5 @@
-#ifndef PLANE_OBSTACLE_H
-#define PLANE_OBSTACLE_H
+#ifndef PHYSICS_PLANE_OBSTACLE_H
+#define PHYSICS_PLANE_OBSTACLE_H
 
 #include "Obstacle.h"
 #include <Eigen>
@@ -19,5 +19,5 @@ private:
     double mOffset;
 };
 
-#endif // PLANE_OBSTACLE_H
+#endif // PHYSICS_PLANE_OBSTACLE_H
 

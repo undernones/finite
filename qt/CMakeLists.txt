@@ -60,9 +60,7 @@ set(SOURCES
     MainWindow.cpp
     MatrixViewer.cpp
     SimThread.cpp
-    ../Obstacle.cpp
     ../Options.cpp
-    ../PlaneObstacle.cpp
     ../World.cpp
 )
 # TODO: ^ Dependencies!

@@ -1,7 +1,7 @@
 #include "World.h"
 #include <iostream>
 #include <geom/MeshLoader.h>
-#include "PlaneObstacle.h"
+#include <physics/PlaneObstacle.h>
 #include "Options.h"
 
 SoftBody World::sBody;
