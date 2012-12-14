@@ -33,6 +33,7 @@ MatrixViewer::matrix() const
 void
 MatrixViewer::refresh()
 {
+    return;
     if (mMatrix != NULL)
     {
         static const char format = 'f';

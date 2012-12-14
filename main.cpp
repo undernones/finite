@@ -23,7 +23,8 @@ main(int argc, char* argv[])
         std::cout << "Duration:    " << Options::duration() << "s" << std::endl
                   << "Timestep:    " << Options::dt() << "s" << std::endl
                   << "Total steps: " << totalSteps << std::endl
-                  << "Frames dir:  " << Options::framesDir() << std::endl
+                  << "Vert count:  " << World::softBody().mesh().verts.size() << std::endl
+                  << "Tet count:   " << World::softBody().mesh().tets.size() << std::endl
                   ;
 
         for (uint32_t i = 0; i < totalSteps; ++i) {

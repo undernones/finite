@@ -42,7 +42,7 @@ GlWidget::GlWidget(QWidget* parent) :
     mLightAmb[1] = 0.09f;
     mLightAmb[2] = 0.09f;
 
-    mEye = Vector3d(0, 0, 6);
+    mEye = Vector3d(0, 0, 7);
     mLookAt = Vector3d(0, 0, 0);
 }
 
