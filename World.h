@@ -5,13 +5,7 @@
 #include <vector>
 #include <Eigen>
 #include <geom/Mesh.h>
-
-struct SimData
-{
-    const std::vector<Eigen::Matrix3d>& deformations;
-    const std::vector<Eigen::Matrix3d>& strains;
-    const std::vector<Eigen::Matrix3d>& stresses;
-};
+#include <physics/SoftBody.h>
 
 class Obstacle;
 class World
@@ -19,9 +13,7 @@ class World
 public:
     static void init(const std::string& filename);
     static void step(double dt);
-    static const Mesh& mesh() { return sMesh; }
-
-    static SimData simData();
+    static const SoftBody& softBody() { return sBody; }
 
 private:
     World();
@@ -30,11 +22,7 @@ private:
 
     World& operator=(const World& rhs);
 
-    static Mesh sMesh;
-    static std::vector<Eigen::Matrix3d> sDeformations;
-    static std::vector<Eigen::Matrix3d> sStrains;
-    static std::vector<Eigen::Matrix3d> sStresses;
-
+    static SoftBody sBody;
     static std::vector<Obstacle*> sObstacles;
 };
 

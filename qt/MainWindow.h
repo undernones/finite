@@ -3,9 +3,7 @@
 
 #include <QtGui/QMainWindow>
 
-struct SimData;
-
-class Mesh;
+class SoftBody;
 class Ui_MainWindow;
 class MainWindow : public QMainWindow
 {
@@ -15,8 +13,7 @@ public:
     explicit MainWindow(QWidget* parent = NULL);
     ~MainWindow();
 
-    void setMesh(const Mesh* mesh);
-    void setSimData(const SimData* simData);
+    void setSoftBody(const SoftBody* body);
 
 private:
     Ui_MainWindow* ui;

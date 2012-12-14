@@ -24,19 +24,18 @@ MainWindow::~MainWindow()
 }
 
 void
-MainWindow::setMesh(const Mesh* mesh)
+MainWindow::setSoftBody(const SoftBody* body)
 {
-    ui->glWidget->setMesh(mesh);
-}
+    const Mesh* mesh = NULL;
+    const Eigen::Matrix3d* matrix = NULL;
 
-void
-MainWindow::setSimData(const SimData* simData)
-{
-    const Eigen::Matrix3d* mat = NULL;
-    if (simData != NULL) {
-        mat = &simData->deformations[0];
+    if (body != NULL) {
+        mesh = &body->mesh();
+        matrix = &body->deformations()[0];
     }
-    ui->matrixViewer->setMatrix(mat);
+
+    ui->glWidget->setMesh(mesh);
+    ui->matrixViewer->setMatrix(matrix);
 }
 
 void

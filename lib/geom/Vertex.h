@@ -1,5 +1,5 @@
-#ifndef GEOMETRY_VERTEX_H
-#define GEOMETRY_VERTEX_H
+#ifndef GEOM_VERTEX_H
+#define GEOM_VERTEX_H
 
 #include <Eigen>
 #include <vector>
@@ -21,4 +21,4 @@ public:
 
 typedef std::vector<Vertex> VertexList;
 
-#endif // GEOMETRY_VERTEX_H
+#endif // GEOM_VERTEX_H

@@ -69,8 +69,7 @@ set(SOURCES
 
 set(FORMS MainWindow.ui MatrixViewer.ui)
 set(RESOURCES images.qrc)
-
-set(LIBS geom)
+set(LIBS geom physics)
 
 set(CMAKE_AUTOMOC ON)
 set(QT_USE_QTOPENGL TRUE)

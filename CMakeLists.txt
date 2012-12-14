@@ -47,6 +47,12 @@ set (GEOM_SRC
 add_library(geom ${GEOM_SRC})
 target_link_libraries(geom ${LIBS})
 
+set (PHYSICS_SRC
+    lib/physics/SoftBody.cpp
+)
+add_library(physics ${PHYSICS_SRC})
+target_link_libraries(physics geom ${LIBS})
+
 set (CORE_SRC
     Utils.cpp
     Obstacle.cpp
@@ -61,7 +67,7 @@ if (APPLE)
 endif()
 
 add_executable(headless main.cpp ${CORE_SRC})
-target_link_libraries(headless geom ${LIBS})
+target_link_libraries(headless geom physics ${LIBS})
 
 
 message(STATUS)

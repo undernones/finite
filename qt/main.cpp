@@ -10,12 +10,10 @@ int main(int argc, char* argv[])
     World::init(Options::meshFile());
 
     SimThread& thread(SimThread::instance());
-    SimData simData(World::simData());
 
     QApplication a(argc, argv);
     MainWindow w;
-    w.setMesh(&World::mesh());
-    w.setSimData(&simData);
+    w.setSoftBody(&World::softBody());
     w.connect(&thread, SIGNAL(stepped()), SLOT(stepped()));
     w.raise();
     w.show();
